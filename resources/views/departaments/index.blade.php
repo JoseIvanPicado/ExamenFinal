@@ -1,0 +1,77 @@
+@extends('layouts.panel')
+@section('title', 'Departamentos')
+
+@section('content')
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h3 class="mb-0">Departamentos</h3>
+                        <a href="{{ route('departaments.create') }}" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Nuevo Departamento
+                        </a>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col"><i class="fa-solid fa-circle-user"> Nombre de empleado</i></th>
+                                <th scope="col"><i class="fa-solid fa-circle-user"> Fecha de creacion</i></th>
+                                <th scope="col"><i class="fas-solid fa-"></i> Fecha de la ausencia</th>
+                                <th scope="col"><i class="fa-solid fa-"></i> Tipo de ausencia</th>
+                                <th scope="col"><i class="fas-solid fa-"></i> Razon de la ausencia</th>
+                                <th scope="col"><i class="fa-solid fa-circle-user"></i> Nombre de jefe</th>
+                                <th scope="col"><i class="fa-solid fa-"></i> Cargo asignado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($departaments as $departament)
+                                <tr>
+                                    <td> {{ $departament->employee->name }} </td>
+                                    <td> {{ $departament->date_start }} </td>
+                                    <td> {{ $departament->date_end }} </td>
+                                    <td> {{ $departament->type }} </td>
+                                    <td> {{ $departament->reasson }} </td>
+                                    <td> {{ $departament->status }} </td>
+                                    <td> {{ $departament->boss->first_name }}</td>
+                                    <td> {{ $departament->charge->name_chargues }}</td>
+
+
+                                    <td style="white-space: nowrap; display: flex; align-items: center;">
+                                        <a href="{{ route('departaments.show', $departaments->id) }}" class="btn btn-primary btn-sm"
+                                            style="margin-right: 5px">
+                                            <i class="fas fa-eye"></i> Mostrar
+                                        </a>
+                                        <a href="{{ route('departaments.edit', $departaments->id) }}" class="btn btn-info btn-sm"
+                                            style="margin-right: 5px">
+                                            <i class="fas fa-edit"></i> Editar
+                                        </a>
+                                        <form action="{{ route('departaments.destroy', $departaments->id) }}" method="POST"
+                                            style="display: inline-block; margin: 0; display: flex; align-items: center;"
+                                            onsubmit="return confirm('¿Esta seguro que desea eliminar este departamento? Esta acción no se puede deshacer.');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn tn-danger btn-sm">
+                                                <i class="fas fa-trash"></i> Eliminar
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card-footer py-4">
+                    <nav aria-label="..." class="d-flex flex-wrap justify-content-center justify-content-lg-start">
+                        {{ $departaments->links() }}
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </div>
+@endsection
