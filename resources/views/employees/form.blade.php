@@ -30,10 +30,10 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                <label class="form-control-label" for="years_old">Fecha de nacimiento
-                </label>
+                <label class="form-control-label" for="years_old">Fecha de nacimiento</label>
                 <input type="date" id="years_old" name="years_old" class="form-control form-control-alternative"
-                    value="{{ old('years_old', isset($employees->years_old)) ? $employee->years_old->format(Y-m-d) : '' }}">
+                    placeholder="Ingresar fecha de nacimiento"
+                    value="{{ old('years_old', $employees->years_old)}}">
             </div>
         </div>
     </div>
@@ -179,24 +179,23 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                <label class="form-control-label" for="address">
+                <label class="form-control-label" for="adress">
                 <i class="fas fa-map-marker-alt"></i> Dirección
                 </label>
-                <input type="text" id="address" name="address" class="form-control form-control-alternative"
+                <input type="text" id="adress" name="adress" class="form-control form-control-alternative"
                     placeholder="Ingresar dirección del empleado"
-                    value="{{ old('address', $employees->address) }}">
+                    value="{{ old('adress', $employees->adress) }}">
             </div>
         </div>
     </div>
 
-    <div class="row">
+        <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                <label class="form-control-label" for="hire_date">
-                <i class="fas fa-calendar-alt"></i> Fecha de contratación
-                </label>
+                <label class="form-control-label" for="hire_date">Fecha de contratacion</label>
                 <input type="date" id="hire_date" name="hire_date" class="form-control form-control-alternative"
-                    value="{{ old('hire_date', isset($employees->hire_date) ? $employees->hire_date->format('Y-m-d') : '') }}">
+                    placeholder="Ingresar fecha de contratacion del empleado"
+                    value="{{ old('hire_date', $employees->hire_date)}}">
             </div>
         </div>
     </div>

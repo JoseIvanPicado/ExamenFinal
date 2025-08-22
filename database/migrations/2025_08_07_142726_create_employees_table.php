@@ -23,8 +23,8 @@ return new class extends Migration
             $table->string('emergency_contact_name');
             $table->string('mail')->unique();
             $table->string('nacionality', 60);
-            $table->string('educative_level', 2);
-            $table->string('identification', 10);
+            $table->string('educative_level', 100);
+            $table->string('identification', 16);
             $table->text('adress', 500);
             $table->date('hire_date');
             $table->string('position', 30);
