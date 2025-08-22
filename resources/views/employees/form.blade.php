@@ -9,7 +9,7 @@
                 </label>
                 <input type="text" id="name" name="name" class="form-control form-control-alternative"
                     placeholder="Ingresar nombre del empleado"
-                    value="{{ old('name', $employee->name) }}">
+                    value="{{ old('name', $employees->name) }}">
             </div>
         </div>
     </div>
@@ -22,7 +22,7 @@
                 </label>
                 <input type="text" id="last_name" name="last_name" class="form-control form-control-alternative"
                     placeholder="Ingresar apellido del empleado"
-                    value="{{ old('last_name', $employee->last_name) }}">
+                    value="{{ old('last_name', $employees->last_name) }}">
             </div>
         </div>
     </div>
@@ -33,7 +33,7 @@
                 <label class="form-control-label" for="date_of_birth">Fecha de nacimiento
                 </label>
                 <input type="date" id="date_of_birth" name="date_of_birth" class="form-control form-control-alternative"
-                    value="{{ old('date_of_birth', isset($employee->date_of_birth)) ? $employee->date_of_birth->format(Y-m-d) : '' }}">
+                    value="{{ old('date_of_birth', isset($employees->date_of_birth)) ? $employee->date_of_birth->format(Y-m-d) : '' }}">
             </div>
         </div>
     </div>
@@ -44,8 +44,8 @@
                 <label for="gender">Genero</label>
                 <select name="gender" id="gender" class="form-control">
                     <option value="" disabled>Seleccione un Genero</option>
-                    <option value="Masculino" {{ old('gender', $employee->gender ?? '') == 'Masculino' ? 'selected' : '' }}>Masculino</option>
-                    <option value="Femenino" {{ old('gender', $employee->gender ?? '') == 'Femenino' ? 'selected' : '' }}>Femenino</option>
+                    <option value="Masculino" {{ old('gender', $employees->gender ?? '') == 'Masculino' ? 'selected' : '' }}>Masculino</option>
+                    <option value="Femenino" {{ old('gender', $employees->gender ?? '') == 'Femenino' ? 'selected' : '' }}>Femenino</option>
                 </select>
             </div>
         </div>
@@ -57,11 +57,11 @@
                 <label for="marital_status">Estado Civil</label>
                 <select name="marital_status" id="marital_status" class="form-control">
                     <option value="" disabled>Seleccione su Estado Civil</option>
-                    <option value="Soltero" {{ old('marital_status', $employee->marital_status ?? '') == 'Soltero' ? 'selected' : '' }}>Soltero</option>
-                    <option value="Casado" {{ old('marital_status', $employee->marital_status ?? '') == 'Casado' ? 'selected' : '' }}>Casado</option>
-                    <option value="Divorciado" {{ old('marital_status', $employee->marital_status ?? '') == 'Divorciado' ? 'selected' : '' }}>Divorciado</option>
-                    <option value="Viudo" {{ old('marital_status', $employee->marital_status ?? '') == 'Viudo' ? 'selected' : '' }}>Viudo</option>
-                    <option value="Unión Libre" {{ old('marital_status', $employee->marital_status ?? '') == 'Unión Libre' ? 'selected' : '' }}>
+                    <option value="Soltero" {{ old('marital_status', $employees->marital_status ?? '') == 'Soltero' ? 'selected' : '' }}>Soltero</option>
+                    <option value="Casado" {{ old('marital_status', $employees->marital_status ?? '') == 'Casado' ? 'selected' : '' }}>Casado</option>
+                    <option value="Divorciado" {{ old('marital_status', $employees->marital_status ?? '') == 'Divorciado' ? 'selected' : '' }}>Divorciado</option>
+                    <option value="Viudo" {{ old('marital_status', $employees->marital_status ?? '') == 'Viudo' ? 'selected' : '' }}>Viudo</option>
+                    <option value="Unión Libre" {{ old('marital_status', $employees->marital_status ?? '') == 'Unión Libre' ? 'selected' : '' }}>
                 </select>
             </div>
         </div>
@@ -75,7 +75,7 @@
                 </label>
                 <input type="number" id="number_phone" name="number_phone" class="form-control form-control-alternative"
                     placeholder="Ingresar número telefónico del empleado"
-                    value="{{ old('number_phone', $employee->number_phone) }}">
+                    value="{{ old('number_phone', $employees->number_phone) }}">
             </div>
         </div>
     </div>
@@ -89,7 +89,7 @@
                 <input type="number" id="emergency_contact_phone" name="emergency_contact_phone"
                     class="form-control form-control-alternative"
                     placeholder="Ingresar número de emergencia del empleado"
-                    value="{{ old('emergency_contact_phone', $employee->emergency_contact_phone) }}">
+                    value="{{ old('emergency_contact_phone', $employees->emergency_contact_phone) }}">
             </div>
         </div>
     </div>
@@ -103,7 +103,7 @@
                 <input type="text" id="emergency_contact_name" name="emergency_contact_name"
                     class="form-control form-control-alternative"
                     placeholder="Ingresar nombre de contacto para emergencias"
-                    value="{{ old('emergency_contact_name', $employee->emergency_contact_name) }}">
+                    value="{{ old('emergency_contact_name', $employees->emergency_contact_name) }}">
             </div>
         </div>
     </div>
@@ -116,7 +116,7 @@
                 </label>
                 <input type="email" id="email" name="email" class="form-control form-control-alternative"
                     placeholder="Ingresar correo electrónico del empleado"
-                    value="{{ old('email', $employee->email) }}">
+                    value="{{ old('email', $employees->email) }}">
             </div>
         </div>
     </div>
@@ -127,18 +127,18 @@
                 <label for="nacionality">Nacionalidad</label>
                 <select name="nacionality" id="nacionality" class="form-control">
                     <option value="" disabled>Seleccione un Genero</option>
-                    <option value="Nicaragua" {{ old('nacionality', $employee->nacionality ?? '') == 'Nicaragua' ? 'selected' : '' }}>Nicaragua</option>
-                    <option value="Panamá" {{ old('nacionality', $employee->nacionality ?? '') == 'Panamá' ? 'selected' : '' }}>Panamá</option>
-                    <option value="Costa Rica" {{ old('nacionality', $employee->nacionality ?? '') == 'Costa Rica' ? 'selected' : '' }}>Costa Rica</option>
-                    <option value="Honduras" {{ old('nacionality', $employee->nacionality ?? '') == 'Honduras' ? 'selected' : '' }}>Honduras</option>
-                    <option value="El Salvador" {{ old('nacionality', $employee->nacionality ?? '') == 'El Salvador' ? 'selected' : '' }}>El Salvador</option>
-                    <option value="Guatemala" {{ old('nacionality', $employee->nacionality ?? '') == 'Guatemala' ? 'selected' : '' }}>Guatemala</option>
-                    <option value="México" {{ old('nacionality', $employee->nacionality ?? '') == 'México' ? 'selected' : '' }}>México</option>
-                    <option value="Colombia" {{ old('nacionality', $employee->nacionality ?? '') == 'Colombia' ? 'selected' : '' }}>Colombia</option>
-                    <option value="Venezuela" {{ old('nacionality', $employee->nacionality ?? '') == 'Venezuela' ? 'selected' : '' }}>Venezuela</option>
-                    <option value="Ecuador" {{ old('nacionality', $employee->nacionality ?? '') == 'Ecuador' ? 'selected' : '' }}>Ecuador</option>
-                    <option value="Estados Unidos" {{ old('nacionality', $employee->nacionality ?? '') == 'Estados Unidos' ? 'selected' : '' }}>Estados Unidos</option>
-                    <option value="España" {{ old('nacionality', $employee->nacionality ?? '') == 'España' ? 'selected' : '' }}>España</option>
+                    <option value="Nicaragua" {{ old('nacionality', $employees->nacionality ?? '') == 'Nicaragua' ? 'selected' : '' }}>Nicaragua</option>
+                    <option value="Panamá" {{ old('nacionality', $employees->nacionality ?? '') == 'Panamá' ? 'selected' : '' }}>Panamá</option>
+                    <option value="Costa Rica" {{ old('nacionality', $employees->nacionality ?? '') == 'Costa Rica' ? 'selected' : '' }}>Costa Rica</option>
+                    <option value="Honduras" {{ old('nacionality', $employees->nacionality ?? '') == 'Honduras' ? 'selected' : '' }}>Honduras</option>
+                    <option value="El Salvador" {{ old('nacionality', $employees->nacionality ?? '') == 'El Salvador' ? 'selected' : '' }}>El Salvador</option>
+                    <option value="Guatemala" {{ old('nacionality', $employees->nacionality ?? '') == 'Guatemala' ? 'selected' : '' }}>Guatemala</option>
+                    <option value="México" {{ old('nacionality', $employees->nacionality ?? '') == 'México' ? 'selected' : '' }}>México</option>
+                    <option value="Colombia" {{ old('nacionality', $employees->nacionality ?? '') == 'Colombia' ? 'selected' : '' }}>Colombia</option>
+                    <option value="Venezuela" {{ old('nacionality', $employees->nacionality ?? '') == 'Venezuela' ? 'selected' : '' }}>Venezuela</option>
+                    <option value="Ecuador" {{ old('nacionality', $employees->nacionality ?? '') == 'Ecuador' ? 'selected' : '' }}>Ecuador</option>
+                    <option value="Estados Unidos" {{ old('nacionality', $employees->nacionality ?? '') == 'Estados Unidos' ? 'selected' : '' }}>Estados Unidos</option>
+                    <option value="España" {{ old('nacionality', $employees->nacionality ?? '') == 'España' ? 'selected' : '' }}>España</option>
                 </select>
             </div>
         </div>
@@ -150,13 +150,13 @@
                 <label for="educative_level">Nivel Educativo</label>
                 <select name="educative_level" id="educative_level" class="form-control">
                     <option value="" disabled>Seleccione su Nivel Educativo</option>
-                    <option value="Primaria" {{ old('educative_level', $employee->educative_level ?? '') == 'Primaria' ? 'selected' : '' }}>Primaria</option>
-                    <option value="Bachiller" {{ old('educative_level', $employee->educative_level ?? '') == 'Bachiller' ? 'selected' : '' }}>Bachiller</option>
-                    <option value="Universitario" {{ old('educative_level', $employee->educative_level ?? '') == 'Universitario Rica' ? 'selected' : '' }}>Universitario</option>
-                    <option value="Técnico" {{ old('educative_level', $employee->educative_level ?? '') == 'Técnico' ? 'selected' : '' }}>Técnico</option>
-                    <option value="Postgrado" {{ old('educative_level', $employee->educative_level ?? '') == 'Postgrado' ? 'selected' : '' }}>Postgrado</option>
-                    <option value="Doctorado" {{ old('educative_level', $employee->educative_level ?? '') == 'Doctorado' ? 'selected' : '' }}>Doctorado</option>
-                    <option value="Otro" {{ old('educative_level', $employee->educative_level ?? '') == 'Otro' ? 'selected' : '' }}>Otro</option>
+                    <option value="Primaria" {{ old('educative_level', $employees->educative_level ?? '') == 'Primaria' ? 'selected' : '' }}>Primaria</option>
+                    <option value="Bachiller" {{ old('educative_level', $employees->educative_level ?? '') == 'Bachiller' ? 'selected' : '' }}>Bachiller</option>
+                    <option value="Universitario" {{ old('educative_level', $employees->educative_level ?? '') == 'Universitario Rica' ? 'selected' : '' }}>Universitario</option>
+                    <option value="Técnico" {{ old('educative_level', $employees->educative_level ?? '') == 'Técnico' ? 'selected' : '' }}>Técnico</option>
+                    <option value="Postgrado" {{ old('educative_level', $employees->educative_level ?? '') == 'Postgrado' ? 'selected' : '' }}>Postgrado</option>
+                    <option value="Doctorado" {{ old('educative_level', $employees->educative_level ?? '') == 'Doctorado' ? 'selected' : '' }}>Doctorado</option>
+                    <option value="Otro" {{ old('educative_level', $employees->educative_level ?? '') == 'Otro' ? 'selected' : '' }}>Otro</option>
                 </select>
             </div>
         </div>
@@ -171,7 +171,7 @@
                 <input type="text" id="identification" name="identification"
                     class="form-control form-control-alternative"
                     placeholder="Ingresar cédula de identificación del empleado"
-                    value="{{ old('identification', $employee->identification) }}">
+                    value="{{ old('identification', $employees->identification) }}">
             </div>
         </div>
     </div>
@@ -184,7 +184,7 @@
                 </label>
                 <input type="text" id="address" name="address" class="form-control form-control-alternative"
                     placeholder="Ingresar dirección del empleado"
-                    value="{{ old('address', $employee->address) }}">
+                    value="{{ old('address', $employees->address) }}">
             </div>
         </div>
     </div>
@@ -196,7 +196,7 @@
                 <i class="fas fa-calendar-alt"></i> Fecha de contratación
                 </label>
                 <input type="date" id="hire_date" name="hire_date" class="form-control form-control-alternative"
-                    value="{{ old('hire_date', isset($employee->hire_date) ? $employee->hire_date->format('Y-m-d') : '') }}">
+                    value="{{ old('hire_date', isset($employees->hire_date) ? $employees->hire_date->format('Y-m-d') : '') }}">
             </div>
         </div>
     </div>
@@ -209,7 +209,7 @@
                 </label>
                 <input type="text" id="position" name="position" class="form-control form-control-alternative"
                     placeholder="Ingresar cargo del empleado"
-                    value="{{ old('position', $employee->position) }}">
+                    value="{{ old('position', $employees->position) }}">
             </div>
         </div>
     </div>
@@ -218,15 +218,15 @@
         <div class="col-lg-6">
             <div class="form-group">
                 <label class="form-control-label" for="departament">
-                <i class="fas fa-building"></i> Departamento
+                <i class="fas fa-building"></i> Departamento de residencia
                 </label>
                 <input type="text" id="departament" name="departament" class="form-control form-control-alternative"
                     placeholder="Ingresar departamento del empleado"
-                    value="{{ old('departament', $employee->departament) }}">
+                    value="{{ old('departament', $employees->departament) }}">
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     <hr class="my-4">
     <h6 class="heading-small text-muted mb-4"> Guardar</h6>
