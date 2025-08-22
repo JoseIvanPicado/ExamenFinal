@@ -1,126 +1,85 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Requests;
 
-use App\Models\Incidence;
-use App\Models\Employee;
-use App\Models\Departament;
-use App\Models\Charge;
-use App\Models\Boss;
-use App\Http\Requests\IncidenceRequest;
+use Illuminate\Foundation\Http\FormRequest;
 
-class IncidenceController extends Controller
+class IncidenceRequest extends FormRequest
 {
     /**
-     * Display a listing of the resource.
+     * Determine if the user is authorized to make this request.
      */
-    public function index()
+    public function authorize(): bool
     {
-        $incidences = Incidence::latest()->paginate(5);
-        return view('incidences.index', compact('incidences'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return true;
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function create()
+    public function rules(): array
     {
-        $incidences = new Incidence();
-
-        $employees = Employee::all();
-        $departaments = Departament::all();
-        $charges = Charge::all();
-        $attendance_registrations = Boss::all();
-
-        return view('incidences.create', compact('incidences', 'employees', 'departaments', 'chages', 'bosses'));
+        return [
+            'employees_id' => 'required|exists:employees,id',
+            'departaments_id' => 'required|exists:departaments,id',
+            'charges_id' => 'required|exists:charges,id',
+            'creation_date' => 'required|date',
+            'type' => 'required|string|max:50',
+            'reasson' => 'required|text|max:500',
+            'penalty' => 'required|string|max:255',
+            'mediation' => 'required|string|max:100',
+            'generated_by' => 'required|string|max:100',
+            'status' => 'required|in:pendiente,aprobado,rechazado',
+            'bosses_id' => 'required|exists:bosses,id',
+        ];
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(IncidenceRequest $request)
+    public function messages(): array
     {
-        Incidence::create($request->validate([
-            'description' => 'required|string|max:255',
-            'employee_id' => 'required|exists:employees,id',
-            'charge_id' => 'required|exists:charges,id',
-            'attendance_registration_id' => 'required|exists:attendance_registrations,id',
-        ]));
+        return [
+            'employee_id.required' => 'El empleado es obligatorio.',
+            'employee_id.exists' => 'El empleado seleccionado no existe.',
 
-        return redirect()->route('incidences.index')
-            ->with('success', 'Incidencia creada con éxito.');
-    }
+            'departament_id.required' => 'El departamento es obligatorio.',
+            'departament_id.exists' => 'El departamento seleccionado no existe.',
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(int $id)
-    {
-        $incidences = Incidence::find($id);
+            'charge_id.required' => 'El cargo es obligatorio.',
+            'charge_id.exists' => 'El cargo seleccionado no existe.',
 
-        if (!$incidences) {
-            return redirect()->route('incidences.index')->with('error', 'Incidencia no encontrada.');
-        }
+            'creation_date.required' => 'La fecha de creación es obligatoria.',
+            'creation_date.date' => 'La fecha de creación debe ser una fecha válida.',
 
-        return view('incidences.show', compact('incidences'));
-    }
+            'name_incidence.required' => 'El nombre de la incidencia es requerido.',
+            'name_incidence.string' => 'El nombre de incidencia debe ser una cadena de caracteres.',
+            'name_incidence.min' => 'El nombre de incidencia debe contener minimo 5 caracteres.',
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(int $id)
-    {
-        $incidences = Incidence::find($id);
+            'type.required' => 'El tipo de incidencia es obligatorio.',
+            'type.string' => 'El tipo de incidencia debe ser una cadena de caracteres.',
+            'type.max' => 'El tipo de incidencia no puede exceder los 50 caracteres.',
 
-        if (!$incidences) {
-            return redirect()->route('incidences.index')->with('error', 'Incidencia no encontrada.');
-        }
+            'reasson.required' => 'La descripción de la incidencia es obligatoria.',
+            'reasson.text' => 'La descripción de la incidencia debe ser un texto.',
+            'reasson.max' => 'La descripción no puede exceder los 500 caracteres.',
 
-        $employees = Employee::all();
-        $departaments = Departament::all();
-        $charges = Charge::all();
-        $attendance_registrations = Boss::all();
+            'penalty.required' => 'La penalización es obligatoria.',
+            'penalty.string' => 'La penalización debe ser una cadena de caracteres.',
+            'penalty.max' => 'La penalización no puede exceder los 255 caracteres.',
 
-        return view('incidences.edit', compact('incidences', 'employees', 'departaments', 'chages', 'bosses'));
-    }
+            'mediation.required' => 'La mediación es obligatoria.',
+            'mediation.string' => 'La mediación debe ser una cadena de caracteres.',
+            'mediation.max' => 'La mediación no puede exceder los 100 caracteres.',
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(IncidenceRequest $request, int $id)
-    {
-        $incidences = Incidence::find($id);
+            'generated_by.required' => 'El empleado que genero el reporte es requerido.',
+            'generated_by.string' => 'El empleado que genero el reporte debe ser una cadena de caracteres.',
+            'generated_by.max' => 'El empleado genero el reporte no puede exceder los 50 caracteres.',
 
-        if (!$incidences) {
-            return redirect()->route('incidences.index')->with('error', 'Incidencia no encontrada.');
-        }
+            'status.required' => 'El estado de la incidencia es obligatorio.',
+            'status.in' => 'El estado debe ser uno de los siguientes: pendiente, aprobado, rechazado.',
 
-        $incidences->update($request->validate([
-            'description' => 'required|string|max:255',
-            'employee_id' => 'required|exists:employees,id',
-            'charge_id' => 'required|exists:charges,id',
-            'attendance_registration_id' => 'required|exists:attendance_registrations,id',
-        ]));
-
-        return redirect()->route('incidences.index')
-            ->with('update', 'Incidencia actualizada con éxito.');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(int $id)
-    {
-        $incidences = Incidence::find($id);
-
-        if (!$incidences) {
-            return redirect()->route('incidences.index')->with('error', 'Incidencia no encontrada.');
-        }
-
-        $incidences->delete();
-
-        return redirect()->route('incidences.index')
-            ->with('delete', 'Incidencia eliminada con éxito.');
+            'bosses_id.required' => 'El jefe asignado es obligatorio.',
+            'bosses_id.exists' => 'El jefe seleccionado no existe.',
+        ];
     }
 }

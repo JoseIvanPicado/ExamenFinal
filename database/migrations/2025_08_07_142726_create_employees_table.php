@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('last_name');
-            $table->date('date_of_birth');
+            $table->date('years_old');
             $table->string('gender', 10);
             $table->string('marital_status', 12);
             $table->string('number_phone', 9)->unique();

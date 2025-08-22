@@ -18,7 +18,7 @@ class Employee extends Model
         'number_phone',
         'emergency_contact_phone',
         'emergency_contact_name',
-        'email',
+        'mail',
         'nacionality',
         'educative_level',
         'identification',

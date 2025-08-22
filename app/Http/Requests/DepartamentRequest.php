@@ -1,95 +1,71 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Requests;
 
-use App\Models\Departament;
-use App\Models\Employee;
-use App\Models\Boss;
-use App\Models\Charge;
-use App\Http\Requests\DepartamentRequest;
+use Illuminate\Foundation\Http\FormRequest;
 
-class DepartamentController extends Controller
+class DepartamentRequest extends FormRequest
 {
     /**
-     * Display a listing of the resource.
+     * Determine if the user is authorized to make this request.
      */
-    public function index()
+    public function authorize(): bool
     {
-        $departaments = Departament::latest()->paginate(5);
-        return view('departaments.index', compact('departaments'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return true;
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function create()
+    public function rules(): array
     {
-        $departament = new Departament();
+        return [
+            'employees_id' => 'required',
+            'name_departament' => 'required|string|max:80',
+            'location' => 'required|string|max:100',
+            'description' => 'required|string|max:500',
+            'responsible_employee' => 'required|string|max:255',
+            'state' => 'required|string|max:30',
+            'capacity_staff' => 'required|integer',
 
-        $employees = Employee::all();
-        $bosses = Boss::all();
-        $charges = Charge::all();
-
-        return view('departaments.create', compact('departament', 'employees', 'bosses', 'charges'));
+            'bosses_id' => 'required',
+            'charges_id' => 'required',
+        ];
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(DepartamentRequest $request)
+    public function messages(): array
     {
-        Departament::create($request->validated());
+        return [
+            'employees_id.required' => 'El empleado asignado es obligatorio.',
 
-        return redirect()->route('departaments.index')
-            ->with('success', 'Departamento creado con exito.');
-    }
+            'name_departament.required' => 'El nombre del departamento es obligatorio.',
+            'name_departament.string' => 'El nombre del departamento debe contener solo caracteres.',
+            'name_departament.max' => 'El nombre del departamento tiene un máximo de 80 caracteres.',
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(int $id)
-    {
-        $departaments = Departament::find($id);
+            'location.required' => 'La ubicación es obligatoria.',
+            'location.string' => 'La ubicación debe contener solo caracteres.',
+            'location.max' => 'La ubicación tiene un máximo de 100 caracteres.',
 
-        return view('departaments.show', compact('departaments'));
-    }
+            'description.required' => 'La descripción es obligatoria.',
+            'description.string' => 'La descripción debe contener solo caracteres.',
+            'description.max' => 'La descripción tiene un máximo de 500 caracteres.',
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(int $id)
-    {
-        $departaments = Departament::find($id);
+            'responsible_employee.required' => 'El empleado responsable es obligatorio.',
+            'responsible_employee.string' => 'El empleado responsable debe contener solo caracteres.',
+            'responsible_employee.max' => 'El empleado responsable tiene un máximo de 255 caracteres.',
 
-        $employees = Employee::all();
-        $bosses = Boss::all();
-        $charges = Charge::all();
+            'state.required' => 'El estado del departamento es obligatorio.',
+            'state.string' => 'El estado del departamento debe contener solo caracteres.',
+            'state.max' => 'El estado del departamento tiene un máximo de 30 caracteres.',
 
-        return view('departaments.edit', compact('departaments', 'employees', 'bosses', 'charges'));
-    }
+            'capacity_staff.required' => 'La capacidad de personal a cargo es obligatoria.',
+            'capacity_staff.integer' => 'La capacidad de personal a cargo debe ser un número entero.',
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(DepartamentRequest $request, int $id)
-    {
-        $departaments = Departament::find($id);
-        $departaments->update($request->validated());
+            'bosses_id.required' => 'El jefe asignado es obligatorio.',
 
-        return redirect()->route('departaments.index')
-            ->with('updated', 'Departamento actualizado con exito.');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(int $id)
-    {
-        $departaments = Departament::find($id);
-        $departaments->delete();
-
-        return redirect()->route('departaments.index')
-            ->with('deleted', 'Departamento eliminado con exito.');
+            'charges_id.required' => 'El cargo asignado es obligatorio.',
+        ];
     }
 }

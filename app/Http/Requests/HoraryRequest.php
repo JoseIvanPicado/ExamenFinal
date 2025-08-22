@@ -1,95 +1,57 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Requests;
 
-use App\Models\Horary;
-use App\Models\Departament;
-use App\Http\Requests\HoraryRequest;
-use App\Models\Employee;
-use App\Models\Boss;
+use Illuminate\Foundation\Http\FormRequest;
 
-class HoraryController extends Controller
+class HoraryRequest extends FormRequest
 {
     /**
-     * Display a listing of the resource.
+     * Determine if the user is authorized to make this request.
      */
-    public function index()
+    public function authorize(): bool
     {
-        $horaries = Horary::latest()->paginate(5);
-        return view('horaries.index', compact('horaries'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return true;
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function create()
+    public function rules(): array
     {
-        $horaries = new Horary();
+        return [
+            'employees_id' => 'required|exists:employees,id',
+            
+            'expected_input' => 'required|time',
+            'expected_exit' => 'required|time',
+            'over_time' => 'nullable|time',
 
-        $departaments = Departament::all();
-        $employees = Employee::all();
-        $bosses = Boss::all();
-
-        return view('horaries.create', compact('horaries', 'departaments', 'employees', 'bosses'));
+            'departaments_id' => 'required|exists:departaments,id',
+            'bosses_id' => 'required|exists:bosses,id'
+        ];
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(HoraryRequest $request)
+    public function messages(): array
     {
-        Horary::create($request->validated());
+        return [
+            'employees_id.required' => 'El empleado es obligatorio.',
+            'employees_id.exists' => 'El empleado seleccionado no existe.',
 
-        return redirect()->route('horaries.index')
-            ->with('success', 'Horario creado con exito.');
-    }
+            'expected_input.required' => 'La hora de entrada esperada es obligatoria.',
+            'expected_input.date_format' => 'La hora de entrada esperada debe tener el formato AM:PM.',
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(int $id)
-    {
-        $horaries = Horary::find($id);
+            'expected_exit.required' => 'La hora de salida esperada es obligatoria.',
+            'expected_exit.date_format' => 'La hora de salida esperada debe tener el formato AM:PM.',
 
-        return view('horaries.show', compact('horaries'));
-    }
+            'over_time.time' => 'El tiempo extra debe ser una hora válida.',
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(int $id)
-    {
-        $horaries = Horary::find($id);
+            'departaments_id.required' => 'El departamento es obligatorio',
+            'departaments_id.exists' => 'El departamento seleccionado no existe.',
 
-        $departaments = Departament::all();
-        $employees = Employee::all();
-        $bosses = Boss::all();
-
-        return view('horaries.edit', compact('horaries', 'departaments', 'employees', 'bosses'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(HoraryRequest $request, int $id)
-    {
-        $horaries = Horary::find($id);
-        $horaries->update($request->validated());
-
-        return redirect()->route('horaries.index')
-            ->with('update', 'Horario actualizado con exito.');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(int $id)
-    {
-        $horaries = Horary::find($id);
-        $horaries->delete();
-
-        return redirect()->route('horaries.index')
-            ->with('deleted', 'Horario eliminado con exito.');
+            'bosses_id.required' => 'El jefe es obligatorio.',
+            'bosses_id.exists' => 'El jefe seleccionado no existe.',
+        ];
     }
 }

@@ -1,105 +1,58 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Requests;
 
-use App\Models\Charge;
-use Illuminate\Http\Request;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class ChargeController extends Controller
+class ChargeRequest extends FormRequest
 {
     /**
-     * Display a listing of the resource.
+     * Determine if the user is authorized to make this request.
      */
-    public function index()
+    public function authorize(): bool
     {
-        $charges = Charge::latest()->paginate(5);
-        return view('charges.index', compact('charges'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return true;
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function create()
+    public function rules(): array
     {
-        $charges = new Charge();
-
-        return view('charges.create', compact('charge'));
+        return [
+            'name_charge' => 'required|string|max:255',
+            'type_charge' => 'required|string|max:40',
+            'academic_level' => 'required|string|max:80',
+            'experience_works' => 'required|string|max:500',
+            'requeriments' => 'required|string|max:500',
+        ];
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function messages(): array
     {
-        Charge::create($request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-        ]));
-    }
+        return [
+            'name_charge.required' => 'El nombre del cargo es obligatorio.',
+            'name_charge.string' => 'El nombre del cargo debe contener solo caracteres.',
+            'name_charge.max' => 'El nombre del cargo tiene un máximo de 255 caracteres.',
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(int $id)
-    {
-        $charges = Charge::find($id);
+            'type_charge.required' => 'El tipo de cargo es obligatorio.',
+            'type_charge.string' => 'El tipo de cargo debe contener solo caracteres.',
+            'type_charge.max' => 'El tipo de cargo tiene un máximo de 40 caracteres.',
 
-        if (!$charges) {
-            return redirect()->route('charges.index')->with('error', 'Cargo no encontrado.');
-        }
+            'academic_level.required' => 'La calificación específica es obligatoria.',
+            'academic_level.string' => 'La calificación específica debe contener solo caracteres.',
+            'academic_level.max' => 'La calificación específica tiene un máximo de 80 caracteres.',
 
-        return view('charges.show', compact('charge'));
-    }
+            'experience_works.required' => 'La experiencia laboral es obligatoria.',
+            'experience_works.string' => 'La experiencia laboral debe contener solo caracteres.',
+            'experience_works.max' => 'La experiencia laboral tiene un máximo de 500 caracteres.',
 
-    /**
-     * Show esta diferente, si causa error, corregir.
-     */
-    public function edit(string $id)
-    {
-        $charges = Charge::find($id);
-
-        if (!$charges) {
-            return redirect()->route('charges.index')->with('error', 'Cargo no encontrado.');
-        }
-
-        return view('charges.edit', compact('charge'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        $charges = Charge::find($id);
-
-        if (!$charges) {
-            return redirect()->route('charges.index')->with('error', 'Cargo no encontrado.');
-        }
-
-        $charges->update($request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-        ]));
-
-        return redirect()->route('charges.index')
-            ->with('updated', 'Cargo actualizado con exito');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        $charges = Charge::find($id);
-
-        if (!$charges) {
-            return redirect()->route('charges.index')->with('error', 'Cargo no encontrado.');
-        }
-
-        $charges->delete();
-
-        return redirect()->route('charges.index')
-            ->with('deleted', 'Cargo eliminado con exito');
+            'requeriments.required' => 'Los requerimientos son obligatorios.',
+            'requeriments.string' => 'Los requerimientos deben contener solo caracteres.',
+            'requeriments.max' => 'Los requerimientos tienen un máximo de 500 caracteres.',
+        ];
     }
 }

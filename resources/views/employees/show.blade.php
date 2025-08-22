@@ -27,7 +27,7 @@
                                 <label class="form-control-label" for="name">
                                 <i class="fas fa-user"></i> Nombre Completo
                                 <label>
-                                <p> {{ $employee->name }} {{ $employee->last_name }} </p>
+                                <p> {{ $employees->name }} {{ $employee->last_name }} </p>
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                                 <label class="form-control-label" for="number_phone">
                                 <i class="fas fa-hashtag"></i> Numero Telefonico
                                 </label>
-                                <p>{{ $employee->number_phone }}</p>
+                                <p>{{ $employees->number_phone }}</p>
                             </div>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                                 <label class="form-control-label" for="email">
                                 <i class="fas fa-envelope"></i> Correo Electrónico
                                 </label>
-                                <p>{{ $employee->mail }}</p>
+                                <p>{{ $employees->mail }}</p>
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                                 <label class="form-control-label" for="address">
                                 <i class="fas fa-map-marker-alt"></i> Dirección
                                 </label>
-                                <p>{{ $employee->address }}</p>
+                                <p>{{ $employees->address }}</p>
                             </div>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                                 <label class="form-control-label" for="hire_date">
                                 <i class="fas fa-calendar-alt"></i> Fecha de Contratación
                                 </label>
-                                <p>{{ $employee->hire_date }}</p>
+                                <p>{{ $employees->hire_date }}</p>
                             </div>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                                 <label class="form-control-label" for="position">
                                 <i class="fas fa-briefcase"></i> Cargo
                                 </label>
-                                <p>{{ $employee->position }}</p>
+                                <p>{{ $employees->position }}</p>
                             </div>
                         </div>
                     </div>
@@ -93,14 +93,14 @@
                                 <label class="form-control-label" for="departament">
                                 <i class="fas fa-building"></i> Departamento
                                 </label>
-                                <p>{{ $employee->departament }}</p>
+                                <p>{{ $employees->departament }}</p>
                             </div>
                         </div>
                     </div>
 
                 </div>
             </div>
-            
+
         </div>
     </div>
 @endsection

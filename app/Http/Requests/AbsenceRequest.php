@@ -1,93 +1,68 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Requests;
 
-use App\Models\Absence;
-use App\Models\Employee;
-use App\Models\Boss;
-use App\Http\Requests\AbsenceRequest;
+use Illuminate\Foundation\Http\FormRequest;
 
-
-class AbsenceController extends Controller
+class AbsenceRequest extends FormRequest
 {
     /**
-     * Display a listing of the resource.
+     * Determine if the user is authorized to make this request.
      */
-    public function index()
+    public function authorize(): bool
     {
-        $absences = Absence::latest()->paginate(5);
-        return view('absences.index', compact('absences'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return true;
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function create()
+    public function rules(): array
     {
-        $absences = new Absence();
-
-        $employees = Employee::all();
-        $bosses = Boss::all();
-
-        return view('absences.create', compact('absence', 'employees', 'bosses'));
+        return [
+            'employee_id' => 'required',
+            'date_in' => 'required|date',
+            'date_end' => 'required|date|after_or_equal:date_in',
+            'type' => 'required|string|max:50',
+            'reason' => 'required|string|max:500',
+            'status' => 'required',
+            'attendance_registrations_id' => 'required',
+            'bosses_id' => 'required',
+        ];
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(AbsenceRequest $request)
+    public function messages(): array
     {
-        Absence::create($request->validated());
+        return [
+            'employee_id.required' => 'El nombre del empleado es obligatorio.',
+            'employee_id.exists' => 'El empleado seleccionado no existe.',
 
-        return redirect()->route('absences.index')
-            ->with('success', 'Ausencia creada con exito.');
-    }
+            'date_in.required' => 'La fecha de inicio es obligatoria.',
+            'date_in.date' => 'La fecha de inicio debe ser una fecha válida.',
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(int $id)
-    {
-        $absences = Absence::find($id);
+            'date_end.required' => 'La fecha de finalización es obligatoria.',
+            'date_end.date' => 'La fecha de finalización debe ser una fecha válida.',
+            'date_end.after_or_equal' => 'La fecha de finalización debe ser igual o posterior a la fecha de inicio.',
 
-        return view('absences.show', compact('absence'));
-    }
+            'type.required' => 'El tipo de ausencia es obligatorio.',
+            'type.string' => 'El tipo de ausencia debe ser una cadena de caracteres.',
+            'type.max' => 'El tipo de ausencia no puede exceder los 50 caracteres.',
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(int $id)
-    {
-        $absences = Absence::find($id);
+            'reason.required' => 'El motivo de la ausencia es obligatorio.',
+            'reason.string' => 'El motivo debe ser una cadena de caracteres.',
+            'reason.max' => 'El motivo no puede exceder los 500 caracteres.',
 
-        $employees = Employee::all();
-        $bosses = Boss::all();
+            'status.required' => 'El estado es obligatorio.',
+            'status.in' => 'El estado debe ser uno de los siguientes: pendiente, aprobado, rechazado.',
 
-        return view('absences.edit', compact('absence', 'employees', 'bosses'));
-    }
+            'attendance_registrations_id.required' => 'El nombre del departamento es obligatorio.',
+            'attendance_registrations_id.exists' => 'El nombre del departamento seleccionado no existe.',
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(AbsenceRequest $request, int $id)
-    {
-        $absences = Absence::find($id);
-        $absences->update($request->validated());
+            'bosses_id.required' => 'El nombre del jefe es obligatorio.',
+            'bosses_id.exists' => 'El nombre del jefe seleccionado no existe.',
+        ];
 
-        return redirect()->route('absences.index')
-            ->with('update', 'Ausencia actualizada con exito.');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(int $id)
-    {
-        $absences = Absence::find($id);
-        $absences->delete();
-
-        return redirect()->route('absences.index')
-            ->with('delated', 'Ausencia eliminada con exito.');
     }
 }

@@ -30,10 +30,10 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                <label class="form-control-label" for="date_of_birth">Fecha de nacimiento
+                <label class="form-control-label" for="years_old">Fecha de nacimiento
                 </label>
-                <input type="date" id="date_of_birth" name="date_of_birth" class="form-control form-control-alternative"
-                    value="{{ old('date_of_birth', isset($employees->date_of_birth)) ? $employee->date_of_birth->format(Y-m-d) : '' }}">
+                <input type="date" id="years_old" name="years_old" class="form-control form-control-alternative"
+                    value="{{ old('years_old', isset($employees->years_old)) ? $employee->years_old->format(Y-m-d) : '' }}">
             </div>
         </div>
     </div>
@@ -111,12 +111,12 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                <label class="form-control-label" for="email">
+                <label class="form-control-label" for="mail">
                 <i class="fas fa-envelope"></i> Correo electrónico
                 </label>
-                <input type="email" id="email" name="email" class="form-control form-control-alternative"
+                <input type="email" id="mail" name="mail" class="form-control form-control-alternative"
                     placeholder="Ingresar correo electrónico del empleado"
-                    value="{{ old('email', $employees->email) }}">
+                    value="{{ old('mail', $employees->mail) }}">
             </div>
         </div>
     </div>

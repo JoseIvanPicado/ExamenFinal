@@ -52,7 +52,7 @@
                                     <td>{{ $employee->number_phone }}</td>
                                     <td>{{ $employee->emergency_contact_phone }}</td>
                                     <td>{{ $employee->emergency_contact_name }}</td>
-                                    <td>{{ $employee->email }}</td>
+                                    <td>{{ $employee->mail }}</td>
                                     <td>{{ $employee->nacionality }}</td>
                                     <td>{{ $employee->educative_level }}</td>
                                     <td>{{ $employee->identification }}</td>
