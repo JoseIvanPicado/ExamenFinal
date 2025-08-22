@@ -134,7 +134,7 @@
                     <option value="El Salvador" {{ old('nacionality', $employee->nacionality ?? '') == 'El Salvador' ? 'selected' : '' }}>El Salvador</option>
                     <option value="Guatemala" {{ old('nacionality', $employee->nacionality ?? '') == 'Guatemala' ? 'selected' : '' }}>Guatemala</option>
                     <option value="México" {{ old('nacionality', $employee->nacionality ?? '') == 'México' ? 'selected' : '' }}>México</option>
-                    <option value="Colombia" {{ old('nacionality', $employee->nacionality ?? '') == 'Colombia' ? 'selected : '' }}>Colombia</option>
+                    <option value="Colombia" {{ old('nacionality', $employee->nacionality ?? '') == 'Colombia' ? 'selected' : '' }}>Colombia</option>
                     <option value="Venezuela" {{ old('nacionality', $employee->nacionality ?? '') == 'Venezuela' ? 'selected' : '' }}>Venezuela</option>
                     <option value="Ecuador" {{ old('nacionality', $employee->nacionality ?? '') == 'Ecuador' ? 'selected' : '' }}>Ecuador</option>
                     <option value="Estados Unidos" {{ old('nacionality', $employee->nacionality ?? '') == 'Estados Unidos' ? 'selected' : '' }}>Estados Unidos</option>
