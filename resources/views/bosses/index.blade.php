@@ -47,9 +47,6 @@
 
 @foreach ($bosses as $boss)
                                 <tr>
-                                    <td>
-                                        <span class="badge badge-pill badge-primary">{{ $boss->id }}</span>
-                                    </td>
                                     <td>{{ $boss->first_name }}</td>
                                     <td>{{ $boss->last_name }}</td>
                                     <td>{{ $boss->identification }}</td>
