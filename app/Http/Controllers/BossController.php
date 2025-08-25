@@ -25,7 +25,7 @@ class BossController extends Controller
     {
         $bosses = new Boss();
 
-        return view('bosses.create', compact('boss'));
+        return view('bosses.create', compact('bosses'));
     }
 
     /**
@@ -56,7 +56,7 @@ class BossController extends Controller
     {
         $bosses = Boss::find($id);
 
-        return view('bosses.edit', compact('boss'));
+        return view('bosses.edit', compact('bosses'));
     }
 
     /**

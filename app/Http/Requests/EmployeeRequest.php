@@ -65,7 +65,8 @@ class EmployeeRequest extends FormRequest
             'gender.max' => 'El género tiene un máximo de 12 caracteres.',
 
             'civil_status.required' => 'El estado civil es obligatorio.',
-            'civil_status.in' => 'El estado civil debe ser uno de los siguientes: soltero, casado, divorciado, viudo.',
+            'civil_status.string' => 'El estado civil debe contener solo caracteres.',
+            'civil_status.string' => 'El estado civil tiene un máximo 12',
 
             'number_phone.required' => 'El número de teléfono es obligatorio.',
             'number_phone.string' => 'El número de teléfono debe contener solo caracteres.',

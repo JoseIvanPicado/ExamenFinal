@@ -25,14 +25,14 @@ class BossRequest extends FormRequest
         return [
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'identification' => ['required', 'string', 'max:14', Rule::unique('bosses')->ignore($this->boss)],
+            'identification' => ['required', 'string', 'max:16', Rule::unique('bosses')->ignore($this->boss)],
             'number_phone' => ['required', 'string', 'max:10', Rule::unique('bosses')->ignore($this->boss)],
-            'email' => ['required', 'email', 'max:255', Rule::unique('bosses')->ignore($this->boss)],
+            'mail' => ['required', 'string', 'max:255', Rule::unique('bosses')->ignore($this->boss)],
             'nacionality' => 'required|string|max:100',
             'years_old' => 'required|date',
             'gender' => 'required|string|max:10',
-            'marital_states' => 'required|in:single,married,divorced,widowed',
-            'adress' => 'required|text|max:500',
+            'marital_states' => 'required|string|max:12',
+            'adress' => 'required|max:500',
             'emergency_contact_phone' => 'required|string|max:9',
             'emergency_contact_name' => 'required|string|max:255',
             'hire_date' => 'required|date',
@@ -64,7 +64,7 @@ class BossRequest extends FormRequest
 
             'identification.required' => 'La identificación es obligatoria.',
             'identification.string' => 'La identificación debe contener solo caracteres.',
-            'identification.max' => 'La identificación tiene un máximo de 14 caracteres.',
+            'identification.max' => 'La identificación tiene un máximo de 16 caracteres.',
             'identification.unique' => 'La identificación ya está en uso.',
 
             'number_phone.required' => 'El número de teléfono es obligatorio.',
@@ -72,10 +72,10 @@ class BossRequest extends FormRequest
             'number_phone.max' => 'El número de teléfono tiene un máximo de 8 caracteres.',
             'number_phone.unique' => 'El número de teléfono ya está en uso.',
 
-            'email.required' => 'El correo electrónico es obligatorio.',
-            'email.email' => 'El correo electrónico debe ser una dirección válida.',
-            'email.max' => 'El correo electrónico tiene un máximo de 255 caracteres.',
-            'email.unique' => 'El correo electrónico ya está en uso.',
+            'mail.required' => 'El correo electrónico es obligatorio.',
+            'mail.email' => 'El correo electrónico debe ser una dirección válida.',
+            'mail.max' => 'El correo electrónico tiene un máximo de 255 caracteres.',
+            'mail.unique' => 'El correo electrónico ya está en uso.',
 
             'nacionality.required' => 'La nacionalidad es obligatoria.',
             'nacionality.string' => 'La nacionalidad debe contener solo caracteres.',
@@ -91,10 +91,10 @@ class BossRequest extends FormRequest
             'gender.max' => 'El género tiene un máximo de 10 caracteres.',
 
             'marital_states.required' => 'El estado civil es obligatorio.',
-            'marital_states.in' => 'El estado civil debe ser uno de los siguientes: soltero, casado, divorciado, viudo.',
+            'marital_states.string' => 'El estado civil debe contener solo caracteres.',
+            'marital_states.max' => 'El estado civil tiene un máximo 12',
 
             'adress.required' => 'La dirección es obligatoria.',
-            'adress.text' => 'La dirección debe contener solo caracteres.',
             'adress.max' => 'La dirección tiene un máximo de 500 caracteres.',
 
             'emergency_contact_phone.required' => 'El teléfono de contacto de emergencia es obligatorio.',

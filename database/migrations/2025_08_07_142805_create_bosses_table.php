@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('identification', 14)->unique();
+            $table->string('identification', 16)->unique();
             $table->string('number_phone', 9)->unique();
             $table->string('mail')->unique();
             $table->string('nacionality', 100);
