@@ -71,7 +71,7 @@
         <div class="col-lg-6">
             <div class="form-group">
                 <label class="form-control-label" for="number_phone">
-                <i class="fas fa-phone"></i> Número telefónico
+                <i class="fas fa-phone-alt"></i> Número telefónico
                 </label>
                 <input type="number" id="number_phone" name="number_phone" class="form-control form-control-alternative"
                     placeholder="Ingresar número telefónico del empleado"

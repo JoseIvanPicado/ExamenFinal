@@ -46,7 +46,7 @@ class BossController extends Controller
     {
         $bosses = Boss::find($id);
 
-        return view('bosses.show', compact('boss'));
+        return view('bosses.show', compact('bosses'));
     }
 
     /**

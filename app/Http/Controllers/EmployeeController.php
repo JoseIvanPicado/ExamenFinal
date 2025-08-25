@@ -47,7 +47,7 @@ class EmployeeController extends Controller
     {
         $employees = Employee::find($id);
 
-        return view('employees.show', compact('employee'));
+        return view('employees.show', compact('employees'));
     }
 
     /**
@@ -57,7 +57,7 @@ class EmployeeController extends Controller
     {
         $employees = Employee::find($id);
 
-        return view('employees.edit', compact('employee'));
+        return view('employees.edit', compact('employees'));
     }
 
     /**

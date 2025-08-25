@@ -28,7 +28,7 @@ class EmployeeRequest extends FormRequest
             'years_old' => 'required|date',
             'gender' => 'required|string|max:10',
             'marital_status' => 'required|string|max:12',
-            'number_phone' => ['required', 'string', 'min:8', 'max:20', Rule::unique('employees')->ignore($this->employee)],
+            'number_phone' => ['required', 'string', 'min:8', 'max:10', Rule::unique('employees')->ignore($this->employee)],
             'emergency_contact_phone' => 'required|string|max:10',
             'emergency_contact_name' => 'required|string|max:255',
             'mail' => ['required', 'string', 'max:255', Rule::unique('employees')->ignore($this->employee)],
@@ -69,7 +69,7 @@ class EmployeeRequest extends FormRequest
 
             'number_phone.required' => 'El número de teléfono es obligatorio.',
             'number_phone.string' => 'El número de teléfono debe contener solo caracteres.',
-            'number_phone.max' => 'El número de teléfono tiene un máximo de 10 caracteres.',
+            'number_phone.max' => 'El número de teléfono tiene un máximo de 9 caracteres.',
             'number_phone.unique' => 'El número de teléfono ya está en uso.',
 
             'emergency_contact_phone.required' => 'El teléfono de contacto de emergencia es obligatorio.',

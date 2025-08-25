@@ -49,7 +49,7 @@ class ChargeController extends Controller
             return redirect()->route('charges.index')->with('error', 'Cargo no encontrado.');
         }
 
-        return view('charges.show', compact('charge'));
+        return view('charges.show', compact('charges'));
     }
 
     /**
