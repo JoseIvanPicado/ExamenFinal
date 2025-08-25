@@ -58,12 +58,12 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                <label class="form-control-label" for="email">
+                <label class="form-control-label" for="mail">
                 <i class="fas fa-envelope"></i> Correo electrónico
                 </label>
-                <input type="email" id="email" name="email" class="form-control form-control-alternative"
+                <input type="email" id="mail" name="mail" class="form-control form-control-alternative"
                     placeholder="Ingresar correo electrónico del empleado"
-                    value="{{ old('email', $bosses->email) }}">
+                    value="{{ old('mail', $bosses->email) }}">
             </div>
         </div>
     </div>

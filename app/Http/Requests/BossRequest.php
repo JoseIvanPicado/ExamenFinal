@@ -54,7 +54,7 @@ class BossRequest extends FormRequest
         return [
             'first_name.required' => 'El nombre es obligatorio.',
             'first_name.string' => 'El nombre debe contener solo caracteres.',
-            'firts_name.min' => 'El nombre tiene un minimo de 2 caracteres.',
+            'first_name.min' => 'El nombre tiene un minimo de 2 caracteres.',
             'first_name.max' => 'El nombre tiene un máximo de 255 caracteres.',
 
             'last_name.required' => 'El apellido es obligatorio.',

@@ -50,26 +50,26 @@
                                     <td>
                                         <span class="badge badge-pill badge-primary">{{ $boss->id }}</span>
                                     </td>
-                                    <td>{{ $employee->first_name }}</td>
-                                    <td>{{ $employee->last_name }}</td>
-                                    <td>{{ $employee->identification }}</td>
-                                    <td>{{ $employee->number_phone }}</td>
-                                    <td>{{ $employee->mail }}</td>
-                                    <td>{{ $employee->nacionality }}</td>
-                                    <td>{{ $employee->years_old }}</td>
-                                    <td>{{ $employee->gender }}</td>
-                                    <td>{{ $employee->marital_states }}</td>
-                                    <td>{{ $employee->adress }}</td>
-                                    <td>{{ $employee->emergency_contact_phone }}</td>
-                                    <td>{{ $employee->emergency_contact_name }}</td>
-                                    <td>{{ $employee->hire_date }}</td>
-                                    <td>{{ $employee->start_date_position }}</td>
-                                    <td>{{ $employee->position }}</td>
-                                    <td>{{ $employee->departament_charge }}</td>
-                                    <td>{{ $employee->team_size }}</td>
-                                    <td>{{ $employee->budget_responsibility }}</td>
-                                    <td>{{ $employee->educative_level }}</td>
-                                    <td>{{ $employee->work_experience }}</td>
+                                    <td>{{ $boss->first_name }}</td>
+                                    <td>{{ $boss->last_name }}</td>
+                                    <td>{{ $boss->identification }}</td>
+                                    <td>{{ $boss->number_phone }}</td>
+                                    <td>{{ $boss->mail }}</td>
+                                    <td>{{ $boss->nacionality }}</td>
+                                    <td>{{ $boss->years_old }}</td>
+                                    <td>{{ $boss->gender }}</td>
+                                    <td>{{ $boss->marital_states }}</td>
+                                    <td>{{ $boss->adress }}</td>
+                                    <td>{{ $boss->emergency_contact_phone }}</td>
+                                    <td>{{ $boss->emergency_contact_name }}</td>
+                                    <td>{{ $boss->hire_date }}</td>
+                                    <td>{{ $boss->start_date_position }}</td>
+                                    <td>{{ $boss->position }}</td>
+                                    <td>{{ $boss->departament_charge }}</td>
+                                    <td>{{ $boss->team_size }}</td>
+                                    <td>{{ $boss->budget_responsibility }}</td>
+                                    <td>{{ $boss->educative_level }}</td>
+                                    <td>{{ $boss->work_experience }}</td>
                                     <td>
                                         @if ($employee->photo)
                                             <img src="{{ asset('storage/' . $employee->photo) }}" alt="Foto del empleado" width="50">
