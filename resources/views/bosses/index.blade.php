@@ -84,18 +84,21 @@
                                         @endif
                                     </td>
 
-                                    <td style="withe-space: nowrap; display: align-items; center;">
-                                        <a href="{{ route('bosses.show', $boss) }}" class="btn btn-primary btn-sm" style="margin-right: 5px;">
-                                           <i class="fas fa-eye"></i> Ver
-                                        <a href="{{ route('bosses.edit', $boss) }}" class="btn btn-sm btn-primary" style="margin-right: 5px;">
-                                            <i class="fas fa-eye"></i> Editar
+                                    <td style="white-space: nowrap; display: flex; align-items: center;">
+                                        <a href="{{ route('bosses.show', $boss->id) }}" class="btn btn-primary btn-sm"
+                                            style="margin-right: 5px">
+                                            <i class="fas fa-eye"></i> Mostrar
+                                        </a>
+                                        <a href="{{ route('bosses.edit', $boss->id) }}" class="btn btn-info btn-sm"
+                                            style="margin-right: 5px">
+                                            <i class="fas fa-edit"></i> Editar
                                         </a>
                                         <form action="{{ route('bosses.destroy', $boss->id) }}" method="POST"
                                             style="display: inline-block; margin: 0; display: flex; align-items: center;"
-                                            onsubmit="return confirm('¿Estás seguro de eliminar este jefé? Esta accion no se puede desahacer.');">
+                                            onsubmit="return confirm('¿Esta seguro que desea eliminar este jefe de area? Esta acción no se puede deshacer.');">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm">
+                                            <button type="submit" class="btn tn-danger btn-sm">
                                                 <i class="fas fa-trash"></i> Eliminar
                                             </button>
                                         </form>
@@ -107,11 +110,13 @@
                 </div>
 
                 <div class="card-footer py-4">
-                    <nav aria-label="..." class="d-flex flex-wrap justify-content-center justify-content-ld-center">
+                    <nav aria-label="..." class="d-flex flex-wrap justify-content-center justify-content-lg-start">
                         {{ $bosses->links() }}
                     </nav>
                 </div>
+
             </div>
         </div>
     </div>
 @endsection
+
