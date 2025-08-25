@@ -63,7 +63,7 @@
                 </label>
                 <input type="email" id="mail" name="mail" class="form-control form-control-alternative"
                     placeholder="Ingresar correo electrónico del empleado"
-                    value="{{ old('mail', $bosses->email) }}">
+                    value="{{ old('mail', $bosses->mail) }}">
             </div>
         </div>
     </div>
@@ -165,11 +165,10 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                <label class="form-control-label" for="hire_date">
-                <i class="fas fa-calendar-alt"></i> Fecha de contratación
-                </label>
+                <label class="form-control-label" for="hire_date">Fecha de contratación</label>
                 <input type="date" id="hire_date" name="hire_date" class="form-control form-control-alternative"
-                    value="{{ old('hire_date', isset($bosses->hire_date) ? $boss->hire_date->format('Y-m-d') : '') }}">
+                    placeholder="Ingresar fecha de contratación"
+                    value="{{ old('hire_date', $bosses->hire_date)}}">
             </div>
         </div>
     </div>
@@ -177,11 +176,10 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                <label class="form-control-label" for="start_date_position">
-                <i class="fas fa-calendar-alt"></i> Fecha de inicio en su puesto actual
-                </label>
+                <label class="form-control-label" for="start_date_position">Fecha de inicio de su posición</label>
                 <input type="date" id="start_date_position" name="start_date_position" class="form-control form-control-alternative"
-                    value="{{ old('start_date_position', isset($bosses->start_date_position) ? $boss->start_date_position->format('Y-m-d') : '') }}">
+                    placeholder="Ingresar fecha de nacimiento"
+                    value="{{ old('start_date_position', $bosses->start_date_position)}}">
             </div>
         </div>
     </div>
@@ -189,12 +187,17 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                <label class="form-control-label" for="position">
-                <i class="fas fa-briefcase"></i> Cargo del empleado
-                </label>
-                <input type="text" id="position" name="position" class="form-control form-control-alternative"
-                    placeholder="Ingresar cargo del empleado"
-                    value="{{ old('position', $bosses->position) }}">
+                <label for="position">Cargo laboral</label>
+                <select name="position" id="position" class="form-control">
+                    <option value="" disabled>Seleccione su cargo</option>
+                    <option value="Director" {{ old('position', $bosses->position ?? '') == 'Director' ? 'selected' : '' }}>Director</option>
+                    <option value="Sub Director" {{ old('position', $bosses->position ?? '') == 'Sub Director' ? 'selected' : '' }}>Sub Director</option>
+                    <option value="Coordinador Academico" {{ old('position', $bosses->position ?? '') == 'Coordinador Academico' ? 'selected' : '' }}>Coordinador Academico</option>
+                    <option value="Jefe de estudios" {{ old('position', $bosses->position ?? '') == 'Jefe de estudios' ? 'selected' : '' }}>Jefe de estudios</option>
+                    <option value="Jefe administrativo" {{ old('position', $bosses->position ?? '') == 'Jefe administrativo' ? 'selected' : '' }}>Personal de administracion</option>
+                    <option value="Encargado de mantenimiento" {{ old('position', $bosses->position ?? '') == 'Encargado de mantenimiento' ? 'selected' : '' }}>Personal de mantenimiento</option>
+                    <option value="Encargado de servicios generales" {{ old('position', $bosses->position ?? '') == 'Encargado de servicios generales' ? 'selected' : '' }}>Personal de limpieza</option>
+                </select>
             </div>
         </div>
     </div>
@@ -202,12 +205,14 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                <label class="form-control-label" for="departament_charge">
-                <i class="fas fa-building"></i> Departamento laboral
-                </label>
-                <input type="text" id="departament_charge" name="departament_charge" class="form-control form-control-alternative"
-                    placeholder="Ingresar departamento del empleado"
-                    value="{{ old('departament_charge', $bosses->departament_charge) }}">
+                <label for="departament_charge">Departamento laboral</label>
+                <select name="departament_charge" id="departament_charge" class="form-control">
+                    <option value="" disabled>Seleccione su tipo de cargo</option>
+                    <option value="Directivo" {{ old('departament_charge', $bosses->departament_charge ?? '') == 'Directivo' ? 'selected' : '' }}>Directivo</option>
+                    <option value="Docente" {{ old('departament_charge', $bosses->departament_charge ?? '') == 'Docente' ? 'selected' : '' }}>Docente</option>
+                    <option value="Administrativo" {{ old('departament_charge', $bosses->departament_charge ?? '') == 'Administrativo' ? 'selected' : '' }}>Administrativo</option>
+                    <option value="Apoyo" {{ old('departament_charge', $bosses->departament_charge ?? '') == 'Apoyo' ? 'selected' : '' }}>Apoyo</option>
+                </select>
             </div>
         </div>
     </div>
@@ -231,7 +236,7 @@
                 <label class="form-control-label" for="budget_responsibility">
                 <i class="fas fa-building"></i> Responsabilidad presupuestaria
                 </label>
-                <input type="number" id="budget_responsibility" name="budget_responsibility" class="form-control form-control-alternative"
+                <input type="decimal" id="budget_responsibility" name="budget_responsibility" class="form-control form-control-alternative"
                     placeholder="Ingresar responsabilidad presupuestaria del jefe"
                     value="{{ old('budget_responsibility', $bosses->budget_responsibility) }}">
             </div>

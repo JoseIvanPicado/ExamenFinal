@@ -33,6 +33,7 @@
                                 <th scope="col">Nombre del contacto de emergencia</th>
                                 <th scope="col">Fecha de contratacion en la empresa</th>
                                 <th scope="col">Fecha de inicio en su puesto actual</th>
+                                <th scope="col">Posicion en la empresa</th>
                                 <th scope="col">Departamento a cargo</th>
                                 <th scope="col">Personal a disposicion</th>
                                 <th scope="col">Responsabilidad presupuestaria</th>
