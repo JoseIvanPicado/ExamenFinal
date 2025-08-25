@@ -26,7 +26,6 @@
                                 <th scope="col">Correo electronico</th>
                                 <th scope="col">Nacionalidad</th>
                                 <th scope="col">Fecha de nacimiento</th>
-                                <th scope="col">Gender</th>
                                 <th scope="col">Genero</th>
                                 <th scope="col">Estado civil</th>
                                 <th scope="col">Dirección</th>

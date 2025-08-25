@@ -84,10 +84,10 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                <label class="form-control-label" for="date_of_birth">Fecha de nacimiento
-                </label>
-                <input type="date" id="date_of_birth" name="date_of_birth" class="form-control form-control-alternative"
-                    value="{{ old('date_of_birth', isset($bosses->date_of_birth)) ? $boss->date_of_birth->format(Y-m-d) : '' }}">
+                <label class="form-control-label" for="years_old">Fecha de nacimiento</label>
+                <input type="date" id="years_old" name="years_old" class="form-control form-control-alternative"
+                    placeholder="Ingresar fecha de nacimiento"
+                    value="{{ old('years_old', $bosses->years_old)}}">
             </div>
         </div>
     </div>
@@ -95,12 +95,12 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                <label class="form-control-label" for="civil_status">
-                <i class="fas fa-heart"></i> Estado civil
-                </label>
-                <input type="text" id="civil_status" name="civil_status" class="form-control form-control-alternative"
-                    placeholder="Ingresar estado civil del empleado"
-                    value="{{ old('civil_status', $bosses->civil_status) }}">
+                <label for="gender">Genero</label>
+                <select name="gender" id="gender" class="form-control">
+                    <option value="" disabled>Seleccione un Genero</option>
+                    <option value="Masculino" {{ old('gender', $bosses->gender ?? '') == 'Masculino' ? 'selected' : '' }}>Masculino</option>
+                    <option value="Femenino" {{ old('gender', $bosses->gender ?? '') == 'Femenino' ? 'selected' : '' }}>Femenino</option>
+                </select>
             </div>
         </div>
     </div>
@@ -108,12 +108,28 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                <label class="form-control-label" for="address">
+                <label for="marital_states">Estado Civil</label>
+                <select name="marital_states" id="marital_states" class="form-control">
+                    <option value="" disabled>Seleccione su Estado Civil</option>
+                    <option value="Soltero" {{ old('marital_states', $bosses->marital_states ?? '') == 'Soltero' ? 'selected' : '' }}>Soltero</option>
+                    <option value="Casado" {{ old('marital_states', $bosses->marital_states ?? '') == 'Casado' ? 'selected' : '' }}>Casado</option>
+                    <option value="Divorciado" {{ old('marital_states', $bosses->marital_states ?? '') == 'Divorciado' ? 'selected' : '' }}>Divorciado</option>
+                    <option value="Viudo" {{ old('marital_states', $bosses->marital_states ?? '') == 'Viudo' ? 'selected' : '' }}>Viudo</option>
+                    <option value="Unión Libre" {{ old('marital_states', $bosses->marital_states ?? '') == 'Unión Libre' ? 'selected' : '' }}>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label class="form-control-label" for="adress">
                 <i class="fas fa-map-marker-alt"></i> Dirección
                 </label>
-                <input type="text" id="address" name="address" class="form-control form-control-alternative"
+                <input type="text" id="adress" name="adress" class="form-control form-control-alternative"
                     placeholder="Ingresar dirección del empleado"
-                    value="{{ old('address', $bosses->address) }}">
+                    value="{{ old('adress', $bosses->adress) }}">
             </div>
         </div>
     </div>
@@ -161,11 +177,11 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                <label class="form-control-label" for="hire_date">
+                <label class="form-control-label" for="start_date_position">
                 <i class="fas fa-calendar-alt"></i> Fecha de inicio en su puesto actual
                 </label>
-                <input type="date" id="hire_date" name="hire_date" class="form-control form-control-alternative"
-                    value="{{ old('hire_date', isset($bosses->hire_date) ? $boss->hire_date->format('Y-m-d') : '') }}">
+                <input type="date" id="start_date_position" name="start_date_position" class="form-control form-control-alternative"
+                    value="{{ old('start_date_position', isset($bosses->start_date_position) ? $boss->start_date_position->format('Y-m-d') : '') }}">
             </div>
         </div>
     </div>
@@ -174,7 +190,7 @@
         <div class="col-lg-6">
             <div class="form-group">
                 <label class="form-control-label" for="position">
-                <i class="fas fa-briefcase"></i> Cargo a cargo
+                <i class="fas fa-briefcase"></i> Cargo del empleado
                 </label>
                 <input type="text" id="position" name="position" class="form-control form-control-alternative"
                     placeholder="Ingresar cargo del empleado"
@@ -186,12 +202,12 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                <label class="form-control-label" for="departament">
-                <i class="fas fa-building"></i> Departamento
+                <label class="form-control-label" for="departament_charge">
+                <i class="fas fa-building"></i> Departamento laboral
                 </label>
-                <input type="text" id="departament" name="departament" class="form-control form-control-alternative"
+                <input type="text" id="departament_charge" name="departament_charge" class="form-control form-control-alternative"
                     placeholder="Ingresar departamento del empleado"
-                    value="{{ old('departament', $bosses->departament) }}">
+                    value="{{ old('departament_charge', $bosses->departament_charge) }}">
             </div>
         </div>
     </div>
