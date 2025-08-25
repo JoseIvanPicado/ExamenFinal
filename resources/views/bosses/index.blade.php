@@ -71,15 +71,15 @@
                                     <td>{{ $boss->educative_level }}</td>
                                     <td>{{ $boss->work_experience }}</td>
                                     <td>
-                                        @if ($employee->photo)
-                                            <img src="{{ asset('storage/' . $employee->photo) }}" alt="Foto del empleado" width="50">
+                                        @if ($boss->photo)
+                                            <img src="{{ asset('storage/' . $boss->photo) }}" alt="Foto del jefe" width="50">
                                         @else
                                             N/A
                                         @endif
                                     </td>
-                                    <td>{{ $employee->observations }}</td>
+                                    <td>{{ $boss->observations }}</td>
                                     <td>
-                                        @if ($employee->status === 'active')
+                                        @if ($boss->status === 'active')
                                             <span class="badge badge-success">Activo</span>
                                         @else
                                             <span class="badge badge-danger">Inactivo</span>
@@ -94,7 +94,7 @@
                                         </a>
                                         <form action="{{ route('bosses.destroy', $boss->id) }}" method="POST"
                                             style="display: inline-block; margin: 0; display: flex; align-items: center;"
-                                            onsubmit="return confirm('¿Estás seguro de eliminar este empleado? Esta accion no se puede desahacer.');">
+                                            onsubmit="return confirm('¿Estás seguro de eliminar este jefé? Esta accion no se puede desahacer.');">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm">
