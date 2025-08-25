@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Charge;
-use Illuminate\Http\Request;
+use App\Http\Requests\ChargeRequest;
 
 class ChargeController extends Controller
 {
@@ -24,18 +24,18 @@ class ChargeController extends Controller
     {
         $charges = new Charge();
 
-        return view('charges.create', compact('charge'));
+        return view('charges.create', compact('charges'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ChargeRequest $request)
     {
-        Charge::create($request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-        ]));
+        Charge::create($request->validate());
+
+        return redirect()->route('charges.index')
+            ->with('succes', 'Cargo creado con exito.');
     }
 
     /**
@@ -63,7 +63,7 @@ class ChargeController extends Controller
             return redirect()->route('charges.index')->with('error', 'Cargo no encontrado.');
         }
 
-        return view('charges.edit', compact('charge'));
+        return view('charges.edit', compact('charges'));
     }
 
     /**

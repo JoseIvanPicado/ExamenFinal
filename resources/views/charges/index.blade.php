@@ -19,11 +19,11 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="Nombre del cargo"></th>
-                                <th scope="Tipo de cargo"></th>
-                                <th scope="Nivel academico"></th>
-                                <th scope="Experiencia de trabajo"></th>
-                                <th scope="Requerimientos necesarios"></th>
+                                <th scope="col">Nombre del cargo</th>
+                                <th scope="col">Tipo de cargo</th>
+                                <th scope="col">Nivel academico</th>
+                                <th scope="col">Experiencia de trabajo</th>
+                                <th scope="col">Requerimientos necesarios</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -45,7 +45,7 @@
                                         </a>
                                         <form action="{{ route('charges.destroy', $charge->id) }}" method="POST"
                                             style="display: inline-block; margin: 0; display: flex; align-items: center;"
-                                            onsubmit="return confirm('¿Estás seguro de eliminar este empleado? Esta accion no se puede desahacer.');">
+                                            onsubmit="return confirm('¿Estás seguro de eliminar este cargo? Esta accion no se puede desahacer.');">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm">
