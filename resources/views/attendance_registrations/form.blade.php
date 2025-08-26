@@ -1,14 +1,12 @@
-<h6 class="heading-small text-muted mb-4">Información del registro de asistencias</h6>
-
 <div class="pl-lg-4">
 
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                <label class="form-control-label" for="creation_date">Fecha del registro
-                </label>
+                <label class="form-control-label" for="creation_date">Fecha de creación</label>
                 <input type="date" id="creation_date" name="creation_date" class="form-control form-control-alternative"
-                value="{{ old('creation_date', isset($attendance_registrations->creation_date)) ? $attendance_registrations->creation_date->format(Y-m-d) : '' }}">
+                    placeholder="Ingresar nombre de sección"
+                    value="{{ old('creation_date', $attendance_registrations->creation_date)}}">
             </div>
         </div>
     </div>
@@ -19,7 +17,7 @@
                 <label class="form-control-label" for="time_in">Hora de entrada
                 </label>
                 <input type="time" id="time_in" name="time_in" class="form-control form-control-alternative"
-                value="{{ old('time_in', isset($attendance_registrations->time_in)) ? $attendance_registrations->time_in->format(Y-m-d\TH:i) : '' }}">
+                value="{{ old('time_in', $attendance_registrations->time_in)}}">
             </div>
         </div>
     </div>
@@ -30,7 +28,7 @@
                 <label class="form-control-label" for="time_exit">Hora de salida
                 </label>
                 <input type="time" id="time_exit" name="time_exit" class="form-control form-control-alternative"
-                value="{{ old('time_exit', isset($attendance_registrations->time_exit)) ? $attendance_registrations->time_exit->format(Y-m-d\TH:i) : '' }}">
+                value="{{ old('time_exit', $attendance_registrations->time_exit)}}">
             </div>
         </div>
     </div>
@@ -41,7 +39,7 @@
                 <label class="form-control-label" for="hours_worked">Horas trabajadas
                 </label>
                 <input type="time" id="hours_worked" name="hours_worked" class="form-control form-control-alternative"
-                value="{{ old('hours_worked', isset($attendance_registrations->hours_worked)) ? $attendance_registrations->hours_worked->format(Y-m-d\TH:i) : '' }}">
+                value="{{ old('hours_worked', $attendance_registrations->hours_worked)}}">
             </div>
         </div>
     </div>
@@ -52,7 +50,7 @@
                 <label class="form-control-label" for="overtime">Horas extras
                 </label>
                 <input type="time" id="overtime" name="overtime" class="form-control form-control-alternative"
-                value="{{ old('overtime', isset($attendance_registrations->overtime)) ? $attendance_registrations->overtime->format(Y-m-d\TH:i) : '' }}">
+                value="{{ old('overtime', $attendance_registrations->overtime)}}">
             </div>
         </div>
     </div>
@@ -60,18 +58,17 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                <label class="form-control-label" for="employees_id">
-                    <i class="fas fa-user-graduate"> Nombre de empleado
-                </label>
-                <select name="employees_id" id="employees_id" class="form-control form-control-alternative">
-                    <option disabled selected>Seleccione un empleado</option>
+                <label class="form-control-label" for="employee_id"><i class="fas fa-user-circle"></i> Trabajador</label>
+
+                <select name="employee_id" id="employee_id" class="form-control form-control-alternative">
+                    <option disabled>Seleccionar Trabajador</option>
                     @foreach ($employees as $employee)
-                        <option value="{{ $employee->id}}"
-                            {{ old('$employee_id', $attendance_registrations->employee_id ?? '') == $employee->id ? 'selected' : '' }}>
+                        <option value="{{ $employee->id }}" @selected(old('employee_id', $employee->employee_id) == $employee->id)>
                             {{ $employee->name }}
                         </option>
                     @endforeach
                 </select>
+
             </div>
         </div>
     </div>
@@ -79,18 +76,17 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                <label class="form-control-label" for="employees_id">
-                    <i class="fas fa-user-graduate"> Nombre del cargo
-                </label>
-                <select name="charges_id" id="charges_id" class="form-control form-control-alternative">
-                    <option disabled selected>Seleccione un empleado</option>
-                    @foreach ($charges_id as $charge)
-                        <option value="{{ $charge->id}}"
-                            {{ old('$charge_id', $attendance_registrations->charge_id ?? '') == $charge->id ? 'selected' : '' }}>
-                            {{ $charge->name_charge }}
+                <label class="form-control-label" for="charge_id"><i class="fas fa-user-circle"></i> Trabajador</label>
+
+                <select name="charge_id" id="charge_id" class="form-control form-control-alternative">
+                    <option disabled>Seleccionar Cargo designado</option>
+                    @foreach ($charges as $charge)
+                        <option value="{{ $charge->id }}" @selected(old('charge_id', $charge->charge_id) == $charge->id)>
+                            {{ $charge->name_chargues }}
                         </option>
                     @endforeach
                 </select>
+
             </div>
         </div>
     </div>
@@ -98,18 +94,17 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                <label class="form-control-label" for="incidences_id">
-                    <i class="fas fa-user-graduate"> Incidencias
-                </label>
-                <select name="incidences_id" id="incidences_id" class="form-control form-control-alternative">
-                    <option disabled selected>Incidencias</option>
-                    @foreach ($incidences_id as $incidence)
-                        <option value="{{ $incidence->id}}"
-                            {{ old('$incidence_id', $attendance_registrations->incidence_id ?? '') == $incidence->id ? 'selected' : '' }}>
-                            {{ $incidence->type }}
+                <label class="form-control-label" for="incidence_id"><i class="fas fa-user-circle"></i> Incidencias</label>
+
+                <select name="incidence_id" id="incidence_id" class="form-control form-control-alternative">
+                    <option disabled>Incidencias</option>
+                    @foreach ($incidences as $incidence)
+                        <option value="{{ $charge->id }}" @selected(old('incidences_id', $incidence->incidence_id) == $incidence->id)>
+                            {{ $incidence->status }}
                         </option>
                     @endforeach
                 </select>
+
             </div>
         </div>
     </div>
