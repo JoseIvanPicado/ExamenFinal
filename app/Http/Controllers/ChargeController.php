@@ -77,10 +77,7 @@ class ChargeController extends Controller
             return redirect()->route('charges.index')->with('error', 'Cargo no encontrado.');
         }
 
-        $charges->update($request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-        ]));
+        $charges->update($request->validated());
 
         return redirect()->route('charges.index')
             ->with('updated', 'Cargo actualizado con exito');

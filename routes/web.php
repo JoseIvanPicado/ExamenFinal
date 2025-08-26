@@ -34,7 +34,7 @@ Route::middleware('auth')->group(function () {
      Route::resource('/employees', EmployeeController::class);
      Route::resource('/bosses', BossController::class);
      Route::resource('/charges', ChargeController::class);
-     Route::resource('attendance_registrations', Attendance_RegistrationController::class);
+     Route::resource('attendance_registrations', Attendance_registrationController::class);
      Route::resource('departaments', DepartamentController::class);
      Route::resource('horaries', HoraryController::class);
      Route::resource('absences', AbsenceController::class);

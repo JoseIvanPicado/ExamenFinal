@@ -15,9 +15,8 @@ class Attendance_registrationController extends Controller
      */
     public function index()
     {
-        $attendance_registrarions = Attendance_registration::latest()->paginate(5);
-        return view('attendance_registrarions.index', compact('attendance_registrarions'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        $attendance_registrations = Attendance_registration::with ('employees', 'charges', 'incidences')->paginate(5);
+        return view('attendance_registrations.index', compact('attendance_registrations'));
     }
 
     /**
@@ -25,13 +24,13 @@ class Attendance_registrationController extends Controller
      */
     public function create()
     {
-        $attendance_registrarions = new Attendance_registration();
+        $attendance_registrations = new Attendance_registration();
 
         $employees = Employee::all();
         $charges = Charge::all();
         $incidences = Incidence::all();
 
-        return view('attendance_registrarions.create', compact('attendance_registrarions', 'employees', 'charges', 'incidences'));
+        return view('attendance_registrations.create', compact('attendance_registrations', 'employees', 'charges', 'incidences'));
     }
 
     /**
@@ -41,7 +40,7 @@ class Attendance_registrationController extends Controller
     {
         Attendance_registration::create($request->validated());
 
-        return redirect()->route('attendance_registrarions.index')
+        return redirect()->route('attendance_registrations.index')
             ->with('success', 'Registro de asistencia creado con exito.');
     }
 
@@ -50,9 +49,13 @@ class Attendance_registrationController extends Controller
      */
     public function show(int $id)
     {
-        $attendance_registrarions = Attendance_registration::find($id);
+        $attendance_registrations = Attendance_registration::find($id);
 
-        return view('attendance_registrarions.show', compact('attendance_registrarions'));
+        $employees = Employee::all();
+        $charges = Charge::all();
+        $incidences = Incidence::all();
+
+        return view('attendance_registrations.show', compact('attendance_registrations'));
     }
 
     /**
@@ -60,13 +63,13 @@ class Attendance_registrationController extends Controller
      */
     public function edit(int $id)
     {
-        $attendance_registrarions = Attendance_registration::find($id);
+        $attendance_registrations = Attendance_registration::find($id);
 
         $employees = Employee::all();
         $charges = Charge::all();
         $incidences = Incidence::all();
 
-        return view('attendance_registrarions.edit', compact('attendance_registrarions', 'employees', 'charges', 'incidences'));
+        return view('attendance_registrations.edit', compact('attendance_registrations', 'employees', 'charges', 'incidences'));
     }
 
     /**
@@ -74,10 +77,10 @@ class Attendance_registrationController extends Controller
      */
     public function update(Attendance_registrationRequest $request, int $id)
     {
-        $attendance_registrarions = Attendance_registration::find($id);
-        $attendance_registrarions->update($request->validated());
+        $attendance_registrations = Attendance_registration::find($id);
+        $attendance_registrations->update($request->validated());
 
-        return redirect()->route('attendance_registrarions.index')
+        return redirect()->route('attendance_registrations.index')
             ->with('update', 'Registro de asistencia actualizado con exito.');
     }
 
@@ -86,10 +89,10 @@ class Attendance_registrationController extends Controller
      */
     public function destroy(int $id)
     {
-        $attendance_registrarions = Attendance_registration::find($id);
-        $attendance_registrarions->delete();
+        $attendance_registrations = Attendance_registration::find($id);
+        $attendance_registrations->delete();
 
-        return redirect()->route('attendance_registrarions.index')
+        return redirect()->route('attendance_registrations.index')
             ->with('deleted', 'Registro de asistencia eliminado con exito.');
     }
 }
