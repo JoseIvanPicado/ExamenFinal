@@ -25,13 +25,13 @@ class DepartamentController extends Controller
      */
     public function create()
     {
-        $departament = new Departament();
+        $departaments = new Departament();
 
         $employees = Employee::all();
         $bosses = Boss::all();
         $charges = Charge::all();
 
-        return view('departaments.create', compact('departament', 'employees', 'bosses', 'charges'));
+        return view('departaments.create', compact('departaments', 'employees', 'bosses', 'charges'));
     }
 
     /**
