@@ -13,7 +13,6 @@ class Departament extends Model
         'name_departament',
         'location',
         'description',
-        'responsible_employee',
         'state',
         'capacity_staff',
         'bosses_id',

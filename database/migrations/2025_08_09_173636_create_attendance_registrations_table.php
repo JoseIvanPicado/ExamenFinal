@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('attendance_registrations', function (Blueprint $table) {
             $table->increments('id');
-            $table->dateTime('creation_date');
+            $table->date('creation_date');
             $table->time('time_in');
             $table->time('time_exit');
-            $table->time('hours_worked');
-            $table->time('overtime');
+            $table->integer('hours_worked');
+            $table->integer('overtime');
 
             $table->integer('employees_id')->unsigned();
             $table->foreign('employees_id')->references('id')->

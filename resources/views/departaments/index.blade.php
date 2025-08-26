@@ -19,11 +19,11 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col"><i class="fa-solid fa-circle-user"> Nombre de empleado</i></th>
-                                <th scope="col"><i class="fa-solid fa-circle-user"> Fecha de creacion</i></th>
-                                <th scope="col"><i class="fas-solid fa-"></i> Fecha de la ausencia</th>
-                                <th scope="col"><i class="fa-solid fa-"></i> Tipo de ausencia</th>
-                                <th scope="col"><i class="fas-solid fa-"></i> Razon de la ausencia</th>
-                                <th scope="col"><i class="fa-solid fa-circle-user"></i> Nombre de jefe</th>
+                                <th scope="col"><i class="fa-solid fa-circle-user"> Nombre del departamento</i></th>
+                                <th scope="col"><i class="fas-solid fa-"></i> Locacion del departamento</th>
+                                <th scope="col"><i class="fa-solid fa-"></i> Estado del departamento</th>
+                                <th scope="col"><i class="fas-solid fa-"></i> Capacidad de personal</th>
+                                <th scope="col"><i class="fa-solid fa-circle-user"></i> Nombre del jefe a cargo</th>
                                 <th scope="col"><i class="fa-solid fa-"></i> Cargo asignado</th>
                             </tr>
                         </thead>
@@ -31,11 +31,10 @@
                             @foreach ($departaments as $departament)
                                 <tr>
                                     <td> {{ $departament->employee->name }} </td>
-                                    <td> {{ $departament->date_start }} </td>
-                                    <td> {{ $departament->date_end }} </td>
-                                    <td> {{ $departament->type }} </td>
-                                    <td> {{ $departament->reasson }} </td>
-                                    <td> {{ $departament->status }} </td>
+                                    <td> {{ $departament->name_departament }} </td>
+                                    <td> {{ $departament->location }} </td>
+                                    <td> {{ $departament->state }} </td>
+                                    <td> {{ $departament->capacity_staff }} </td>
                                     <td> {{ $departament->boss->first_name }}</td>
                                     <td> {{ $departament->charge->name_chargues }}</td>
 

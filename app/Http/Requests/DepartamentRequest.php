@@ -23,10 +23,10 @@ class DepartamentRequest extends FormRequest
     {
         return [
             'employees_id' => 'required',
+            
             'name_departament' => 'required|string|max:80',
             'location' => 'required|string|max:100',
             'description' => 'required|string|max:500',
-            'responsible_employee' => 'required|string|max:255',
             'state' => 'required|string|max:30',
             'capacity_staff' => 'required|integer',
 

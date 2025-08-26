@@ -38,7 +38,7 @@
             <div class="form-group">
                 <label class="form-control-label" for="hours_worked">Horas trabajadas
                 </label>
-                <input type="time" id="hours_worked" name="hours_worked" class="form-control form-control-alternative"
+                <input type="number" id="hours_worked" name="hours_worked" class="form-control form-control-alternative"
                 value="{{ old('hours_worked', $attendance_registrations->hours_worked)}}">
             </div>
         </div>
@@ -49,7 +49,7 @@
             <div class="form-group">
                 <label class="form-control-label" for="overtime">Horas extras
                 </label>
-                <input type="time" id="overtime" name="overtime" class="form-control form-control-alternative"
+                <input type="number" id="overtime" name="overtime" class="form-control form-control-alternative"
                 value="{{ old('overtime', $attendance_registrations->overtime)}}">
             </div>
         </div>
@@ -76,7 +76,7 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                <label class="form-control-label" for="charge_id"><i class="fas fa-user-circle"></i> Trabajador</label>
+                <label class="form-control-label" for="charge_id"><i class="fas fa-user-circle"></i> Nombre del cargo</label>
 
                 <select name="charge_id" id="charge_id" class="form-control form-control-alternative">
                     <option disabled>Seleccionar Cargo designado</option>

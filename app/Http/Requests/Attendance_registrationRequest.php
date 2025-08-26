@@ -23,10 +23,10 @@ class Attendance_registrationRequest extends FormRequest
     {
         return [
             'creation_date' => 'required|date',
-            'time_in' => 'required|date_format:H:i',
-            'time_exit' => 'required|date_format:H:i',
-            'hours_worked' => 'required|numeric|min:0',
-            'overtime' => 'nullable|numeric',
+            'time_in' => 'required',
+            'time_exit' => 'required',
+            'hours_worked' => 'required|integer',
+            'overtime' => 'nullable|integer',
             'employees_id' => 'required|exists:employees,id',
             'charges_id' => 'required|exists:charges,id',
             'incidences_id' => 'required|exists:incidences,id'
@@ -40,16 +40,16 @@ class Attendance_registrationRequest extends FormRequest
             'creation_date.date' => 'La fecha de creación debe ser una fecha válida.',
 
             'time_in.required' => 'La hora de entrada es obligatoria.',
-            'time_in.date_format' => 'La hora de entrada debe tener el formato AM:PM.',
+            'time_in.integer' => 'La hora de entrada debe ser en número',
 
             'time_exit.required' => 'La hora de salida es obligatoria.',
-            'time_exit.date_format' => 'La hora de salida debe tener el formato AM:PM.',
+            'time_exit.integer' => 'La hora de salida debe ser en número',
 
             'hours_worked.required' => 'Ingresar las horas trabajadas es obligatorios.',
-            'hours_worked.numeric' => 'Las horas trabajadas deben ser un número.',
+            'hours_worked.integer' => 'Las horas trabajadas deben ser un número.',
             'hours_worked.min' => 'Las horas trabajadas no pueden ser negativas.',
 
-            'overtime.numeric' => 'El tiempo extra debe ser un número.',
+            'overtime.integer' => 'El tiempo extra debe ser un número.',
             'overtime.nullable' => 'El tiempo extra es opcional.',
 
             'employees_id.required' => 'El nombre del empleado es obligatorio.',
