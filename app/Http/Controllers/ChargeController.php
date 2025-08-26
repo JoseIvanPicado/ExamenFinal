@@ -32,7 +32,7 @@ class ChargeController extends Controller
      */
     public function store(ChargeRequest $request)
     {
-        Charge::create($request->validate());
+        Charge::create($request->validated());
 
         return redirect()->route('charges.index')
             ->with('succes', 'Cargo creado con exito.');
@@ -55,7 +55,7 @@ class ChargeController extends Controller
     /**
      * Show esta diferente, si causa error, corregir.
      */
-    public function edit(string $id)
+    public function edit(int $id)
     {
         $charges = Charge::find($id);
 
@@ -69,7 +69,7 @@ class ChargeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ChargeRequest $request, int $id)
     {
         $charges = Charge::find($id);
 
@@ -89,7 +89,7 @@ class ChargeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
         $charges = Charge::find($id);
 

@@ -35,6 +35,7 @@
                                 <th scope="col">Fecha de contratacion</th>
                                 <th scope="col">Cargo</th>
                                 <th scope="col">Departamento</th>
+                                <th scope="col">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>

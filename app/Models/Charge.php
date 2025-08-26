@@ -9,10 +9,10 @@ class charge extends Model
     protected $table = 'charges';
 
     protected $fillable = [
-        'name_charge',
-        'type_charge',
+        'name_chargues',
+        'type_charges',
         'academic_level',
-        'experience_works',
+        'experience_work',
         'requeriments',
     ];
 

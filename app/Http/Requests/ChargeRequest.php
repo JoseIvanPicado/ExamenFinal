@@ -23,10 +23,10 @@ class ChargeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name_charge' => 'required|string|max:255',
-            'type_charge' => 'required|string|max:40',
+            'name_chargues' => 'required|string|max:255',
+            'type_charges' => 'required|string|max:40',
             'academic_level' => 'required|string|max:80',
-            'experience_works' => 'required|string|max:500',
+            'experience_work' => 'required|string|max:500',
             'requeriments' => 'required|string|max:500',
         ];
     }
@@ -34,21 +34,21 @@ class ChargeRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name_charge.required' => 'El nombre del cargo es obligatorio.',
-            'name_charge.string' => 'El nombre del cargo debe contener solo caracteres.',
-            'name_charge.max' => 'El nombre del cargo tiene un máximo de 255 caracteres.',
+            'name_chargues.required' => 'El nombre del cargo es obligatorio.',
+            'name_chargues.string' => 'El nombre del cargo debe contener solo caracteres.',
+            'name_chargues.max' => 'El nombre del cargo tiene un máximo de 255 caracteres.',
 
-            'type_charge.required' => 'El tipo de cargo es obligatorio.',
-            'type_charge.string' => 'El tipo de cargo debe contener solo caracteres.',
-            'type_charge.max' => 'El tipo de cargo tiene un máximo de 40 caracteres.',
+            'type_charges.required' => 'El tipo de cargo es obligatorio.',
+            'type_charges.string' => 'El tipo de cargo debe contener solo caracteres.',
+            'type_charges.max' => 'El tipo de cargo tiene un máximo de 40 caracteres.',
 
             'academic_level.required' => 'La calificación específica es obligatoria.',
             'academic_level.string' => 'La calificación específica debe contener solo caracteres.',
             'academic_level.max' => 'La calificación específica tiene un máximo de 80 caracteres.',
 
-            'experience_works.required' => 'La experiencia laboral es obligatoria.',
-            'experience_works.string' => 'La experiencia laboral debe contener solo caracteres.',
-            'experience_works.max' => 'La experiencia laboral tiene un máximo de 500 caracteres.',
+            'experience_work.required' => 'La experiencia laboral es obligatoria.',
+            'experience_work.string' => 'La experiencia laboral debe contener solo caracteres.',
+            'experience_work.max' => 'La experiencia laboral tiene un máximo de 500 caracteres.',
 
             'requeriments.required' => 'Los requerimientos son obligatorios.',
             'requeriments.string' => 'Los requerimientos deben contener solo caracteres.',

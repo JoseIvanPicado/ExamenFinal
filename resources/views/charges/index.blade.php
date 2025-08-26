@@ -24,31 +24,33 @@
                                 <th scope="col">Nivel academico</th>
                                 <th scope="col">Experiencia de trabajo</th>
                                 <th scope="col">Requerimientos necesarios</th>
+                                <th scope="col">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
 @foreach ($charges as $charge)
-                            <tr>
-                                <span class="badge badge-pill badge-primary">{{ $charge->id }}</span>
-                            </td>
-                            <td>{{ $charge->name_charge }}</td>
-                            <td>{{ $charge->type_charge }}</td>
+
+                            <td>{{ $charge->name_chargues }}</td>
+                            <td>{{ $charge->type_charges }}</td>
                             <td>{{ $charge->academic_level }}</td>
-                            <td>{{ $charge->experience_works }}</td>
+                            <td>{{ $charge->experience_work }}</td>
                             <td>{{ $charge->requeriments }}</td>
 
-                            <td style="withe-space: nowrap; display: align-items; center;">
-                                        <a href="{{ route('charges.show', $charge) }}" class="btn btn-primary btn-sm" style="margin-right: 5px;">
-                                           <i class="fas fa-eye"></i> Ver
-                                        <a href="{{ route('charges.edit', $charge) }}" class="btn btn-sm btn-primary" style="margin-right: 5px;">
-                                            <i class="fas fa-eye"></i> Editar
+                                    <td style="white-space: nowrap; display: flex; align-items: center;">
+                                        <a href="{{ route('charges.show', $charge->id) }}" class="btn btn-primary btn-sm"
+                                            style="margin-right: 5px">
+                                            <i class="fas fa-eye"></i> Mostrar
+                                        </a>
+                                        <a href="{{ route('charges.edit', $charge->id) }}" class="btn btn-info btn-sm"
+                                            style="margin-right: 5px">
+                                            <i class="fas fa-edit"></i> Editar
                                         </a>
                                         <form action="{{ route('charges.destroy', $charge->id) }}" method="POST"
                                             style="display: inline-block; margin: 0; display: flex; align-items: center;"
-                                            onsubmit="return confirm('¿Estás seguro de eliminar este cargo? Esta accion no se puede desahacer.');">
+                                            onsubmit="return confirm('¿Esta seguro que desea eliminar este trabajador? Esta acción no se puede deshacer.');">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm">
+                                            <button type="submit" class="btn tn-danger btn-sm">
                                                 <i class="fas fa-trash"></i> Eliminar
                                             </button>
                                         </form>
@@ -60,11 +62,13 @@
                 </div>
 
                 <div class="card-footer py-4">
-                    <nav aria-label="..." class="d-flex flex-wrap justify-content-center justify-content-ld-center">
+                    <nav aria-label="..." class="d-flex flex-wrap justify-content-center justify-content-lg-start">
                         {{ $charges->links() }}
                     </nav>
                 </div>
+
             </div>
         </div>
     </div>
 @endsection
+
