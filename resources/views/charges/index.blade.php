@@ -19,12 +19,12 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col">Nombre del cargo</th>
-                                <th scope="col">Tipo de cargo</th>
-                                <th scope="col">Nivel academico</th>
-                                <th scope="col">Experiencia de trabajo</th>
-                                <th scope="col">Requerimientos necesarios</th>
-                                <th scope="col">Acciones</th>
+                                <th scope="col"><i class="fas fa-briefcase"></i> Nombre del cargo</th>
+                                <th scope="col"><i class="fas fa-tasks"></i> Tipo de cargo</th>
+                                <th scope="col"><i class="fas fa-graduation-cap"></i> Nivel académico</th>
+                                <th scope="col"><i class="fas fa-clipboard-list"></i> Experiencia de trabajo</th>
+                                <th scope="col"><i class="fas fa-check-circle"></i> Requerimientos necesarios</th>
+                                <th scope="col"><i class="fas fa-cogs"></i> Acciones</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -19,30 +19,30 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Apellido</th>
-                                <th scope="col">Cedula de identificación</th>
-                                <th scope="col">Número telefonico</th>
-                                <th scope="col">Correo electronico</th>
-                                <th scope="col">Nacionalidad</th>
-                                <th scope="col">Fecha de nacimiento</th>
-                                <th scope="col">Genero</th>
-                                <th scope="col">Estado civil</th>
-                                <th scope="col">Dirección</th>
-                                <th scope="col">Número telefonico de emergencia</th>
-                                <th scope="col">Nombre del contacto de emergencia</th>
-                                <th scope="col">Fecha de contratacion en la empresa</th>
-                                <th scope="col">Fecha de inicio en su puesto actual</th>
-                                <th scope="col">Posicion en la empresa</th>
-                                <th scope="col">Departamento a cargo</th>
-                                <th scope="col">Personal a disposicion</th>
-                                <th scope="col">Responsabilidad presupuestaria</th>
-                                <th scope="col">Nivel educativo</th>
-                                <th scope="col">Experiencia laboral</th>
-                                <th scope="col">Foto</th>
-                                <th scope="col">Observaciones</th>
-                                <th scope="col">Estado</th>
-                                <th scope="col">Acciones</th>
+                                <th scope="col"><i class="fas fa-user"></i> Nombre</th>
+                                <th scope="col"><i class="fas fa-user"></i> Apellido</th>
+                                <th scope="col"><i class="fas fa-id-card"></i> Cédula de identificación</th>
+                                <th scope="col"><i class="fas fa-phone"></i> Número telefónico</th>
+                                <th scope="col"><i class="fas fa-envelope"></i> Correo electrónico</th>
+                                <th scope="col"><i class="fas fa-flag"></i> Nacionalidad</th>
+                                <th scope="col"><i class="fas fa-birthday-cake"></i> Fecha de nacimiento</th>
+                                <th scope="col"><i class="fas fa-venus-mars"></i> Género</th>
+                                <th scope="col"><i class="fas fa-heart"></i> Estado civil</th>
+                                <th scope="col"><i class="fas fa-map-marker-alt"></i> Dirección</th>
+                                <th scope="col"><i class="fas fa-phone-square-alt"></i> Número telefónico de emergencia</th>
+                                <th scope="col"><i class="fas fa-user-friends"></i> Contacto de emergencia</th>
+                                <th scope="col"><i class="fas fa-calendar-alt"></i> Fecha de contratación en la empresa</th>
+                                <th scope="col"><i class="fas fa-calendar-check"></i> Fecha de inicio en su puesto actual</th>
+                                <th scope="col"><i class="fas fa-briefcase"></i> Posición en la empresa</th>
+                                <th scope="col"><i class="fas fa-building"></i> Departamento a cargo</th>
+                                <th scope="col"><i class="fas fa-users"></i> Personal a disposición</th>
+                                <th scope="col"><i class="fas fa-coins"></i> Responsabilidad presupuestaria</th>
+                                <th scope="col"><i class="fas fa-graduation-cap"></i> Nivel educativo</th>
+                                <th scope="col"><i class="fas fa-clipboard-list"></i> Experiencia laboral</th>
+                                <th scope="col"><i class="fas fa-camera"></i> Foto</th>
+                                <th scope="col"><i class="fas fa-sticky-note"></i> Observaciones</th>
+                                <th scope="col"><i class="fas fa-toggle-on"></i> Estado</th>
+                                <th scope="col"><i class="fas fa-cogs"></i> Acciones</th>
                             </tr>
                         </thead>
                         <tbody>

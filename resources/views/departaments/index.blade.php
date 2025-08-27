@@ -17,16 +17,16 @@
                 <div class="table-responsive">
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
-                            <tr>
-                                <th scope="col"><i class="fa-solid fa-circle-user"></i> Nombre de empleado</th>
-                                <th scope="col"><i class="fa-solid fa-circle-user"></i> Nombre del departamento</th>
-                                <th scope="col"><i class="fas-solid fa-"></i> Locacion del departamento</th>
-                                <th scope="col"><i class="fa-solid fa-"></i> Estado del departamento</th>
-                                <th scope="col"><i class="fas-solid fa-"></i> Capacidad de personal</th>
-                                <th scope="col"><i class="fa-solid fa-circle-user"></i> Apellido del jefe a cargo</th>
-                                <th scope="col"><i class="fa-solid fa-"></i> Cargo asignado</th>
-                                <th scope="col"><i class="fa-solid fa"></i> Acciones</th>
-                            </tr>
+                        <tr>
+                            <th scope="col"><i class="fas fa-user"></i> Nombre de empleado</th>
+                            <th scope="col"><i class="fas fa-building"></i> Nombre del departamento</th>
+                            <th scope="col"><i class="fas fa-map-marker-alt"></i> Locación del departamento</th>
+                            <th scope="col"><i class="fas fa-toggle-on"></i> Estado del departamento</th>
+                            <th scope="col"><i class="fas fa-users"></i> Capacidad de personal</th>
+                            <th scope="col"><i class="fas fa-user-tie"></i> Apellido del jefe a cargo</th>
+                            <th scope="col"><i class="fas fa-briefcase"></i> Cargo asignado</th>
+                            <th scope="col"><i class="fas fa-cogs"></i> Acciones</th>
+                        </tr>
                         </thead>
                         <tbody>
                             @foreach ($departaments as $departament)

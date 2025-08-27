@@ -18,15 +18,15 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col"><i class="fa-solid fa-circle-user"> Nombre del empleado</i></th>
-                                <th scope="col"><i class="fa-solid fa-circle-user"> Fecha de creacion</i></th>
-                                <th scope="col"><i class="fas-solid fa-"></i> Fecha de la ausencia</th>
-                                <th scope="col"><i class="fa-solid fa-"></i> Tipo de ausencia</th>
-                                <th scope="col"><i class="fas-solid fa-hastag"></i> Razon de la ausencia</th>
-                                <th scope="col"><i class="fa-solid fa-calendar-days"></i> Estado de la ausencia</th>
-                                <th scope="col"><i class="fa-solid fa-calendar-days"></i> Registro de horas laborales</th>
-                                <th scope="col"><i class="fa-solid fa-calendar-days"></i> Nombre del jefe a cargo</th>
-                                <th scope="col"><i class="fa-solid fa"></i> Acciones</th>
+                                <th scope="col"><i class="fas fa-user"></i> Nombre del empleado</th>
+                                <th scope="col"><i class="fas fa-calendar-plus"></i> Fecha de creación</th>
+                                <th scope="col"><i class="fas fa-calendar-alt"></i> Fecha de la ausencia</th>
+                                <th scope="col"><i class="fas fa-exclamation-circle"></i> Tipo de ausencia</th>
+                                <th scope="col"><i class="fas fa-comment-alt"></i> Razón de la ausencia</th>
+                                <th scope="col"><i class="fas fa-toggle-on"></i> Estado de la ausencia</th>
+                                <th scope="col"><i class="fas fa-clock"></i> Registro de horas laborales</th>
+                                <th scope="col"><i class="fas fa-user-tie"></i> Nombre del jefe a cargo</th>
+                                <th scope="col"><i class="fas fa-cogs"></i> Acciones</th>
                             </tr>
                         </thead>
                         <tbody>

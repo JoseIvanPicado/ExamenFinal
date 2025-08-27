@@ -17,15 +17,15 @@
                 <div class="table-responsive">
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
-                            <tr>
-                                <th scope="col"><i class="fa-solid fa-circle-user"> Nombre del empleado</i></th>
-                                <th scope="col"><i class="fas-solid fa-"></i> Hora de entrada</th>
-                                <th scope="col"><i class="fa-solid fa-"></i> Hora de salida</th>
-                                <th scope="col"><i class="fas-solid fa-"></i> Horas extras laboradas</th>
-                                <th scope="col"><i class="fa-solid fa-"></i> Nombre del departamento asignado</th>
-                                <th scope="col"><i class="fa-solid fa-"></i> Nombre del jefe a cargo</th>
-                                <th scope="col"><i class="fa-solid fa"></i> Acciones</th>
-                            </tr>
+                        <tr>
+                            <th scope="col"><i class="fas fa-user"></i> Nombre de empleado</th>
+                            <th scope="col"><i class="fas fa-clock"></i> Hora de entrada</th>
+                            <th scope="col"><i class="fas fa-clock"></i> Hora de salida</th>
+                            <th scope="col"><i class="fas fa-stopwatch"></i> Horas extras</th>
+                            <th scope="col"><i class="fas fa-building"></i> Departamento asignado</th>
+                            <th scope="col"><i class="fas fa-user-tie"></i> Nombre del jefe</th>
+                            <th scope="col"><i class="fas fa-cogs"></i> Acciones</th>
+                        </tr>
                         </thead>
                         <tbody>
                             @foreach ($horaries as $horary)
@@ -34,7 +34,7 @@
                                     <td> {{ $horary->employee->name }} </td>
                                     <td> {{ $horary->expected_input }} </td>
                                     <td> {{ $horary->expected_exit }} </td>
-                                    <td> {{ $horary->over_time }} </td>
+                                    <td> {{ $horary->overtime }} </td>
                                     <td> {{ $horary->departament->name_departament }} </td>
                                     <td> {{ $horary->boss->first_name }} </td>
 

@@ -84,7 +84,7 @@
         <div class="col-lg-6">
             <div class="form-group">
                 <label class="form-control-label" for="emergency_contact_phone">
-                <i class="fas fa-phone-alt"></i> Número de emergencia
+                <i class="fas fa-phone-alt"></i> Número telefónico de emergencia
                 </label>
                 <input type="number" id="emergency_contact_phone" name="emergency_contact_phone"
                     class="form-control form-control-alternative"

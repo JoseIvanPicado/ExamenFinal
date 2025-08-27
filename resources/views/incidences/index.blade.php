@@ -17,20 +17,20 @@
                 <div class="table-responsive">
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
-                            <tr>
-                                <th scope="col"><i class="fa-solid fa-circle-user"> Nombre de empleado</i></th>
-                                <th scope="col"><i class="fas-solid fa-"></i> Nombre del departamento</th>
-                                <th scope="col"><i class="fa-solid fa-"></i> Nombre del cargo</th>
-                                <th scope="col"><i class="fas-solid fa-"></i> Fecha de creación</th>
-                                <th scope="col"><i class="fa-solid fa-"></i> Tipo de incidencia</th>
-                                <th scope="col"><i class="fa-solid fa-"></i> Razón de la incidencia</th>
-                                <th scope="col"><i class="fa-solid fa-"></i> Penalizacion por incidencia</th>
-                                <th scope="col"><i class="fa-solid fa-"></i> Acuerdo por incidencia</th>
-                                <th scope="col"><i class="fa-solid fa-"></i> Generado por...</th>
-                                <th scope="col"><i class="fa-solid fa-"></i> Estado de incidencia</th>
-                                <th scope="col"><i class="fa-solid fa-"></i> Jefe responsable</th>
-                                <th scope="col"><i class="fa-solid fa"></i> Acciones</th>
-                            </tr>
+                        <tr>
+                            <th scope="col"><i class="fas fa-user"></i> Nombre de empleado</th>
+                            <th scope="col"><i class="fas fa-building"></i> Departamento</th>
+                            <th scope="col"><i class="fas fa-id-badge"></i> Cargo</th>
+                            <th scope="col"><i class="fas fa-calendar"></i> Fecha de creación</th>
+                            <th scope="col"><i class="fas fa-triangle-exclamation"></i> Tipo de incidencia</th>
+                            <th scope="col"><i class="fas fa-comment-dots"></i> Razón</th>
+                            <th scope="col"><i class="fas fa-ban"></i> Penalización</th>
+                            <th scope="col"><i class="fas fa-handshake"></i> Acuerdo</th>
+                            <th scope="col"><i class="fas fa-user-pen"></i> Generado por</th>
+                            <th scope="col"><i class="fas fa-toggle-on"></i> Estado</th>
+                            <th scope="col"><i class="fas fa-user-tie"></i> Jefe responsable</th>
+                            <th scope="col"><i class="fas fa-cogs"></i> Acciones</th>
+                        </tr>
                         </thead>
                         <tbody>
                             @foreach ($incidences as $incidence)

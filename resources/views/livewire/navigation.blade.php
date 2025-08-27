@@ -21,7 +21,7 @@
         <li class="nav-item {{ Request::route()->named('dashboard') ? 'active' : '' }}">
             <a class="nav-link {{ Request::route()->named('dashboard') ? 'active' : '' }}"
                 href="{{ route('dashboard') }}" wire:navigate>
-                <i class="ni ni-tv-2 text-primary"></i> Dashboard
+                <i class="fa-solid fa-circle-user"></i> Dashboard
             </a>
         </li>
     </ul>
@@ -63,61 +63,62 @@
     <!-- Navigation -->
     <ul class="navbar-nav mb-mb-3">
 
-        <li class="nav-item {{ Request::route()->named('employees.index') ? 'active' : '' }}">
-            <a class="nav-link {{ Request::route()->named('employees.index') ? 'active' : '' }}"
-                href="{{ route('employees.index') }}" wire:navigate>
-                <i class="fas fa-dove text-red"></i> Trabajador/Empleado
-            </a>
-        </li>
+       <li class="nav-item {{ Request::route()->named('employees.index') ? 'active' : '' }}">
+    <a class="nav-link {{ Request::route()->named('employees.index') ? 'active' : '' }}"
+        href="{{ route('employees.index') }}" wire:navigate>
+        <i class="fas fa-user text-blue"></i> Trabajador/Empleado
+    </a>
+</li>
 
-        <li class="nav-item {{ Request::route()->named('bosses.index') ? 'active' : '' }}">
-            <a class="nav-link {{ Request::route()->named('bosses.index') ? 'active' : '' }}"
-                href="{{ route('bosses.index') }}" wire:navigate>
-                <i class="fas fa-dove text-orange"></i> Jefes
-            </a>
-        </li>
+<li class="nav-item {{ Request::route()->named('bosses.index') ? 'active' : '' }}">
+    <a class="nav-link {{ Request::route()->named('bosses.index') ? 'active' : '' }}"
+        href="{{ route('bosses.index') }}" wire:navigate>
+        <i class="fas fa-user-tie text-orange"></i> Jefes
+    </a>
+</li>
 
-        <li class="nav-item {{ Request::route()->named('charges.index') ? 'active' : '' }}">
-            <a class="nav-link {{ Request::route()->named('charges.index') ? 'active' : '' }}"
-                href="{{ route('charges.index') }}" wire:navigate>
-                <i class="fas fa-dove text-orange"></i> Cargos
-            </a>
-        </li>
+<li class="nav-item {{ Request::route()->named('charges.index') ? 'active' : '' }}">
+    <a class="nav-link {{ Request::route()->named('charges.index') ? 'active' : '' }}"
+        href="{{ route('charges.index') }}" wire:navigate>
+        <i class="fas fa-briefcase text-purple"></i> Cargos
+    </a>
+</li>
 
-        <li class="nav-item {{ Request::route()->named('attendance_registrations.index') ? 'active' : '' }}">
-            <a class="nav-link {{ Request::route()->named('attendance_registrations.index') ? 'active' : '' }}"
-                href="{{ route('attendance_registrations.index') }}" wire:navigate>
-                <i class="fas fa-dove text-orange"></i> Registro de asistencia
-            </a>
-        </li>
+<li class="nav-item {{ Request::route()->named('attendance_registrations.index') ? 'active' : '' }}">
+    <a class="nav-link {{ Request::route()->named('attendance_registrations.index') ? 'active' : '' }}"
+        href="{{ route('attendance_registrations.index') }}" wire:navigate>
+        <i class="fas fa-calendar-check text-green"></i> Registro de asistencia
+    </a>
+</li>
 
-        <li class="nav-item {{ Request::route()->named('departaments.index') ? 'active' : '' }}">
-            <a class="nav-link {{ Request::route()->named('departaments.index') ? 'active' : '' }}"
-                href="{{ route('departaments.index') }}" wire:navigate>
-                <i class="fas fa-dove text-orange"></i> Departamentos
-            </a>
-        </li>
+<li class="nav-item {{ Request::route()->named('departaments.index') ? 'active' : '' }}">
+    <a class="nav-link {{ Request::route()->named('departaments.index') ? 'active' : '' }}"
+        href="{{ route('departaments.index') }}" wire:navigate>
+        <i class="fas fa-building text-yellow"></i> Departamentos
+    </a>
+</li>
 
-        <li class="nav-item {{ Request::route()->named('horaries.index') ? 'active' : '' }}">
-            <a class="nav-link {{ Request::route()->named('horaries.index') ? 'active' : '' }}"
-                href="{{ route('horaries.index') }}" wire:navigate>
-                <i class="fas fa-dove text-orange"></i> Horarios
-            </a>
-        </li>
+<li class="nav-item {{ Request::route()->named('horaries.index') ? 'active' : '' }}">
+    <a class="nav-link {{ Request::route()->named('horaries.index') ? 'active' : '' }}"
+        href="{{ route('horaries.index') }}" wire:navigate>
+        <i class="fas fa-clock text-indigo"></i> Horarios
+    </a>
+</li>
 
-        <li class="nav-item {{ Request::route()->named('absences.index') ? 'active' : '' }}">
-            <a class="nav-link {{ Request::route()->named('absences.index') ? 'active' : '' }}"
-                href="{{ route('absences.index') }}" wire:navigate>
-                <i class="fas fa-dove text-orange"></i> Ausencias
-            </a>
-        </li>
+<li class="nav-item {{ Request::route()->named('absences.index') ? 'active' : '' }}">
+    <a class="nav-link {{ Request::route()->named('absences.index') ? 'active' : '' }}"
+        href="{{ route('absences.index') }}" wire:navigate>
+        <i class="fas fa-user-times text-red"></i> Ausencias
+    </a>
+</li>
 
-        <li class="nav-item {{ Request::route()->named('incidences.index') ? 'active' : '' }}">
-            <a class="nav-link {{ Request::route()->named('incidences.index') ? 'active' : '' }}"
-                href="{{ route('incidences.index') }}" wire:navigate>
-                <i class="fas fa-dove text-orange"></i> Incidencias
-            </a>
-        </li>
+<li class="nav-item {{ Request::route()->named('incidences.index') ? 'active' : '' }}">
+    <a class="nav-link {{ Request::route()->named('incidences.index') ? 'active' : '' }}"
+        href="{{ route('incidences.index') }}" wire:navigate>
+        <i class="fas fa-exclamation-triangle text-pink"></i> Incidencias
+    </a>
+</li>
+
 
     </ul>
 </div>

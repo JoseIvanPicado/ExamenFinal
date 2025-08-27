@@ -18,15 +18,15 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col"><i class="fa-solid fa-circle-user"> Fecha de creación</i></th>
-                                <th scope="col"><i class="fas-solid fa-"></i> Hora de entrada</th>
-                                <th scope="col"><i class="fa-solid fa-"></i> Hora de salida</th>
-                                <th scope="col"><i class="fas-solid fa-"></i> Horas trabajadas</th>
-                                <th scope="col"><i class="fa-solid fa-"></i> Horas extras</th>
-                                <th scope="col"><i class="fa-solid fa-"></i> Nombre del empleado</th>
-                                <th scope="col"><i class="fa-solid fa-"></i> Nombre del cargo</th>
-                                <th scope="col"><i class="fa-solid fa-"></i> Incidencias</th>
-                                <th scope="col"><i class="fa-solid fa"></i> Acciones</th>
+                                <th scope="col"><i class="fas fa-calendar-plus"></i> Fecha de creación</th>
+                                <th scope="col"><i class="fas fa-clock"></i> Hora de entrada</th>
+                                <th scope="col"><i class="fas fa-clock"></i> Hora de salida</th>
+                                <th scope="col"><i class="fas fa-hourglass-half"></i> Horas trabajadas</th>
+                                <th scope="col"><i class="fas fa-stopwatch"></i> Horas extras</th>
+                                <th scope="col"><i class="fas fa-user"></i> Nombre del empleado</th>
+                                <th scope="col"><i class="fas fa-briefcase"></i> Nombre del cargo</th>
+                                <th scope="col"><i class="fas fa-exclamation-triangle"></i> Incidencias</th>
+                                <th scope="col"><i class="fas fa-cogs"></i> Acciones</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -26,7 +26,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label" for="name">
-                                    <i class="fas fa-hashtag"></i> Numero Telefonico
+                                    <i class="fas fa-user-circle"></i> Nombre del empleado
                                 </label>
                                 <p>{{ $employees->name }}</p>
                             </div>
@@ -58,10 +58,10 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="form-control-label" for="address">
+                                <label class="form-control-label" for="adress">
                                     <i class="fas fa-map-marker-alt"></i> Dirección
                                 </label>
-                                <p>{{ $employees->address }}</p>
+                                <p>{{ $employees->adress }}</p>
                             </div>
                         </div>
                     </div>
