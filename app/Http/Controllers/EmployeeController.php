@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use App\Http\Requests\EmployeeRequest;
+use App\Exports\EmployeesExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EmployeeController extends Controller
 {
@@ -82,5 +84,10 @@ class EmployeeController extends Controller
 
         return redirect()->route('employees.index')
             ->with('deleted', 'Trabajador eliminado con exito');
+    }
+
+    public function exportExcel()
+    {
+        return Excel::download(new EmployeesExport, '')
     }
 }
