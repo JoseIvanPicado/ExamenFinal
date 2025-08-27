@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class charge extends Model
+class Charge extends Model
 {
     protected $table = 'charges';
 
@@ -16,7 +16,7 @@ class charge extends Model
         'requeriments',
     ];
 
-    public function departament()
+    public function departaments()
     {
         return $this->hasMany(Departament::class);
     }

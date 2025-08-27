@@ -29,12 +29,12 @@ class Employee extends Model
         'departament',
 ];
 
-public function departament()
+public function departaments()
     {
         return $this->hasMany(Departament::class);
     }
 
-public function incidence()
+public function incidences()
     {
         return $this->hasMany(Incidence::class);
     }
@@ -42,6 +42,11 @@ public function incidence()
 public function horaries()
     {
         return $this->hasMany(Horary::class);
+    }
+
+public function attendance()
+    {
+        return $this->hasMany(Attendance_registration::class);
     }
 
 }

@@ -14,23 +14,28 @@ class Attendance_registration extends Model
         'time_exit',
         'hours_worked',
         'overtime',
-        'employees_id',
-        'charges_id',
-        'incidences_id'
+        'employee_id',
+        'charge_id',
+        'incidence_id'
     ];
 
-    public function absences()
+    public function employee()
     {
-        return $this->belongsTo(Absence::class);
+        return $this->belongsTo(Employee::class);
     }
 
-    public function charges()
+    public function charge()
     {
         return $this->belongsTo(Charge::class);
     }
 
-    public function incidences()
+    public function incidence()
     {
         return $this->belongsTo(Incidence::class);
+    }
+
+    public function absence()
+    {
+        return $this->hasMany(Absence::class);
     }
 }

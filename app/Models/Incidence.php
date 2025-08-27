@@ -9,9 +9,9 @@ class incidence extends Model
     protected $table = 'incidences';
 
     protected $fillable = [
-        'employees_id',
-        'departaments_id',
-        'charges_id',
+        'employee_id',
+        'departament_id',
+        'charge_id',
         'creation_date',
         'type',
         'reasson',
@@ -19,7 +19,7 @@ class incidence extends Model
         'mediation',
         'generated_by',
         'status',
-        'bosses_id',
+        'boss_id',
     ];
 
     public function employee()
@@ -27,9 +27,9 @@ class incidence extends Model
         return $this->belongsTo(Employee::class);
     }
 
-    public function boss()
+    public function departament()
     {
-        return $this->belongsTo(Boss::class);
+        return $this->belongsTo(Departament::class);
     }
 
     public function charge()
@@ -37,8 +37,14 @@ class incidence extends Model
         return $this->belongsTo(Charge::class);
     }
 
+        public function boss()
+    {
+        return $this->belongsTo(Boss::class);
+    }
+
     public function attendance_registrations()
     {
-        return $this->belongsTo(Attendance_registration::class);
+        return $this->hasMany(Attendance_registration::class);
     }
+
 }

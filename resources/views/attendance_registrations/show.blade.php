@@ -36,10 +36,23 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label class="form-control-label" for="employees_id">
+                                <label class="form-control-label" for="overtime">
+                                    <i class="fas fa-user"></i>Horas trabajadas
+                                </label>
+                                <p>{{ $attendance_registrations->overtime }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label class="form-control-label" for="employee_id">
                                     <i class="fas fa-user"></i>Nombre del empleado
                                 </label>
-                                <p>{{ $employees_id->name }}</p>
+                                <p>{{ $attendance_registrations->employee->name }}</p>
                             </div>
                         </div>
                     </div>
@@ -47,10 +60,10 @@
                    <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label class="form-control-label" for="charges_id">
+                                <label class="form-control-label" for="charge_id">
                                     <i class="fas fa-user"></i>Cargo del empleado
                                 </label>
-                                <p>{{ $charges_id->name_charge }}</p>
+                                <p>{{ $attendance_registrations->charge->name_chargues }}</p>
                             </div>
                         </div>
                     </div>
@@ -58,21 +71,10 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label class="form-control-label" for="incidences_id">
+                                <label class="form-control-label" for="incidence_id">
                                     <i class="fas fa-user"></i>Incidencias del empleado
                                 </label>
-                                <p>{{ $incidences_id->type }}</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label class="form-control-label" for="incidences_id">
-                                    <i class="fas fa-user"></i>Estado de incidencia
-                                </label>
-                                <p>{{ $incidences_id->status }}</p>
+                                <p>{{ $attendance_registrations->incidence->type }}</p>
                             </div>
                         </div>
                     </div>

@@ -18,13 +18,14 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col"><i class="fa-solid fa-circle-user"> Nombre de empleado</i></th>
-                                <th scope="col"><i class="fa-solid fa-circle-user"> Nombre del departamento</i></th>
+                                <th scope="col"><i class="fa-solid fa-circle-user"></i> Nombre de empleado</th>
+                                <th scope="col"><i class="fa-solid fa-circle-user"></i> Nombre del departamento</th>
                                 <th scope="col"><i class="fas-solid fa-"></i> Locacion del departamento</th>
                                 <th scope="col"><i class="fa-solid fa-"></i> Estado del departamento</th>
                                 <th scope="col"><i class="fas-solid fa-"></i> Capacidad de personal</th>
-                                <th scope="col"><i class="fa-solid fa-circle-user"></i> Nombre del jefe a cargo</th>
+                                <th scope="col"><i class="fa-solid fa-circle-user"></i> Apellido del jefe a cargo</th>
                                 <th scope="col"><i class="fa-solid fa-"></i> Cargo asignado</th>
+                                <th scope="col"><i class="fa-solid fa"></i> Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,20 +36,21 @@
                                     <td> {{ $departament->location }} </td>
                                     <td> {{ $departament->state }} </td>
                                     <td> {{ $departament->capacity_staff }} </td>
-                                    <td> {{ $departament->boss->first_name }}</td>
+                                    <td> {{ $departament->boss->last_name }}</td>
                                     <td> {{ $departament->charge->name_chargues }}</td>
 
 
                                     <td style="white-space: nowrap; display: flex; align-items: center;">
-                                        <a href="{{ route('departaments.show', $departaments->id) }}" class="btn btn-primary btn-sm"
-                                            style="margin-right: 5px">
+                                        <a href="{{ route('departaments.show', $departament->id) }}"
+                                            class="btn btn-primary btn-sm" style="margin-right: 5px">
                                             <i class="fas fa-eye"></i> Mostrar
                                         </a>
-                                        <a href="{{ route('departaments.edit', $departaments->id) }}" class="btn btn-info btn-sm"
-                                            style="margin-right: 5px">
+                                        <a href="{{ route('departaments.edit', $departament->id) }}"
+                                            class="btn btn-info btn-sm" style="margin-right: 5px">
                                             <i class="fas fa-edit"></i> Editar
                                         </a>
-                                        <form action="{{ route('departaments.destroy', $departaments->id) }}" method="POST"
+                                        <form action="{{ route('departaments.destroy', $departament->id) }}"
+                                            method="POST"
                                             style="display: inline-block; margin: 0; display: flex; align-items: center;"
                                             onsubmit="return confirm('¿Esta seguro que desea eliminar este departamento? Esta acción no se puede deshacer.');">
                                             @csrf

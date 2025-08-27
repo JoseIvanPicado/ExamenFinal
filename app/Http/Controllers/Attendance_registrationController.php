@@ -15,7 +15,7 @@ class Attendance_registrationController extends Controller
      */
     public function index()
     {
-        $attendance_registrations = Attendance_registration::with ('employees', 'charges', 'incidences')->paginate(5);
+        $attendance_registrations = Attendance_registration::with ('employee', 'charge', 'incidence')->paginate(5);
         return view('attendance_registrations.index', compact('attendance_registrations'));
     }
 

@@ -15,9 +15,8 @@ class DepartamentController extends Controller
      */
     public function index()
     {
-        $departaments = Departament::latest()->paginate(5);
-        return view('departaments.index', compact('departaments'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        $departaments = Departament::with('employee', 'boss', 'charge')->paginate(5);
+        return view('departaments.index', compact('departaments'));
     }
 
     /**

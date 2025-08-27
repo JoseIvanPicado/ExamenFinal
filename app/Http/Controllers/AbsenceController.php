@@ -6,7 +6,7 @@ use App\Models\Absence;
 use App\Models\Employee;
 use App\Models\Boss;
 use App\Http\Requests\AbsenceRequest;
-
+use App\Models\Attendance_registration;
 
 class AbsenceController extends Controller
 {
@@ -15,9 +15,8 @@ class AbsenceController extends Controller
      */
     public function index()
     {
-        $absences = Absence::latest()->paginate(5);
-        return view('absences.index', compact('absences'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+         $absences = Absence::with('employee', 'attendance_registration', 'boss')->paginate(5);
+        return view('absences.index', compact('absences'));
     }
 
     /**
@@ -28,9 +27,10 @@ class AbsenceController extends Controller
         $absences = new Absence();
 
         $employees = Employee::all();
+        $attendance_registrations = Attendance_registration::all();
         $bosses = Boss::all();
 
-        return view('absences.create', compact('absence', 'employees', 'bosses'));
+        return view('absences.create', compact('absences', 'employees', 'attendance_registrations', 'bosses'));
     }
 
     /**
@@ -51,7 +51,11 @@ class AbsenceController extends Controller
     {
         $absences = Absence::find($id);
 
-        return view('absences.show', compact('absence'));
+        $employees = Employee::all();
+        $attendance_registrations = Attendance_registration::all();
+        $bosses = Boss::all();
+
+        return view('absences.show', compact('absences', 'employees', 'attendance_registrations', 'bosses'));
     }
 
     /**
@@ -62,9 +66,10 @@ class AbsenceController extends Controller
         $absences = Absence::find($id);
 
         $employees = Employee::all();
+        $attendance_registrations = Attendance_registration::all();
         $bosses = Boss::all();
 
-        return view('absences.edit', compact('absence', 'employees', 'bosses'));
+        return view('absences.edit', compact('absences', 'employees', 'attendance_registrations',  'bosses'));
     }
 
     /**
@@ -76,7 +81,7 @@ class AbsenceController extends Controller
         $absences->update($request->validated());
 
         return redirect()->route('absences.index')
-            ->with('update', 'Ausencia actualizada con exito.');
+            ->with('updated', 'Ausencia actualizada con exito.');
     }
 
     /**

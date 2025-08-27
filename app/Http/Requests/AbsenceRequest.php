@@ -26,10 +26,10 @@ class AbsenceRequest extends FormRequest
             'date_in' => 'required|date',
             'date_end' => 'required|date|after_or_equal:date_in',
             'type' => 'required|string|max:50',
-            'reason' => 'required|string|max:500',
+            'reasson' => 'required|string|max:500',
             'status' => 'required',
-            'attendance_registrations_id' => 'required',
-            'bosses_id' => 'required',
+            'attendance_registration_id' => 'required',
+            'boss_id' => 'required',
         ];
     }
 
@@ -60,8 +60,8 @@ class AbsenceRequest extends FormRequest
             'attendance_registrations_id.required' => 'El nombre del departamento es obligatorio.',
             'attendance_registrations_id.exists' => 'El nombre del departamento seleccionado no existe.',
 
-            'bosses_id.required' => 'El nombre del jefe es obligatorio.',
-            'bosses_id.exists' => 'El nombre del jefe seleccionado no existe.',
+            'boss_id.required' => 'El nombre del jefe es obligatorio.',
+            'boss_id.exists' => 'El nombre del jefe seleccionado no existe.',
         ];
 
     }

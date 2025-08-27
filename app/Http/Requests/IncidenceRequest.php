@@ -22,17 +22,17 @@ class IncidenceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'employees_id' => 'required|exists:employees,id',
-            'departaments_id' => 'required|exists:departaments,id',
-            'charges_id' => 'required|exists:charges,id',
+            'employee_id' => 'required',
+            'departament_id' => 'required',
+            'charge_id' => 'required|exists:charges,id',
             'creation_date' => 'required|date',
             'type' => 'required|string|max:50',
-            'reasson' => 'required|text|max:500',
+            'reasson' => 'required|string|max:500',
             'penalty' => 'required|string|max:255',
             'mediation' => 'required|string|max:100',
             'generated_by' => 'required|string|max:100',
-            'status' => 'required|in:pendiente,aprobado,rechazado',
-            'bosses_id' => 'required|exists:bosses,id',
+            'status' => 'required|string|max:100',
+            'boss_id' => 'required|exists:bosses,id',
         ];
     }
 
@@ -60,7 +60,7 @@ class IncidenceRequest extends FormRequest
             'type.max' => 'El tipo de incidencia no puede exceder los 50 caracteres.',
 
             'reasson.required' => 'La descripción de la incidencia es obligatoria.',
-            'reasson.text' => 'La descripción de la incidencia debe ser un texto.',
+            'reasson.string' => 'La descripción de la incidencia debe ser una cadena de caracteres.',
             'reasson.max' => 'La descripción no puede exceder los 500 caracteres.',
 
             'penalty.required' => 'La penalización es obligatoria.',
@@ -73,10 +73,11 @@ class IncidenceRequest extends FormRequest
 
             'generated_by.required' => 'El empleado que genero el reporte es requerido.',
             'generated_by.string' => 'El empleado que genero el reporte debe ser una cadena de caracteres.',
-            'generated_by.max' => 'El empleado genero el reporte no puede exceder los 50 caracteres.',
+            'generated_by.max' => 'El empleado genero el reporte no puede exceder los 100 caracteres.',
 
             'status.required' => 'El estado de la incidencia es obligatorio.',
-            'status.in' => 'El estado debe ser uno de los siguientes: pendiente, aprobado, rechazado.',
+            'status.string' => 'El estado de la incidencia debe ser una cadena de caracteres.',
+            'status.max' => 'El empleado genero el reporte no puede exceder los 100 caracteres.',
 
             'bosses_id.required' => 'El jefe asignado es obligatorio.',
             'bosses_id.exists' => 'El jefe seleccionado no existe.',

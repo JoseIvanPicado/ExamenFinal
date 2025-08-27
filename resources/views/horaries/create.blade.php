@@ -19,13 +19,15 @@
             </div>
         </div>
         <div class="card-body container-fluid">
-            <form action="{{ route("horaries.update", $horaries->id) }}" method="POST">
-                @csrf
-                @method('PUT')
-                @include('horaries.form')
+            <form action="{{ route('horaries.store') }}" method="POST">
+             @csrf
+            @include('horaries.form')
             </form>
         </div>
     </div>
+
+
+</form>
 
 </div>
 

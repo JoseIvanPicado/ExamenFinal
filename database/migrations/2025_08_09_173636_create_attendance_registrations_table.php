@@ -19,16 +19,16 @@ return new class extends Migration
             $table->integer('hours_worked');
             $table->integer('overtime');
 
-            $table->integer('employees_id')->unsigned();
-            $table->foreign('employees_id')->references('id')->
+            $table->integer('employee_id')->unsigned();
+            $table->foreign('employee_id')->references('id')->
             on('employees')->onDelete('cascade')->onUpdate('cascade');
 
-            $table->integer('charges_id')->unsigned();
-            $table->foreign('charges_id')->references('id')->
+            $table->integer('charge_id')->unsigned();
+            $table->foreign('charge_id')->references('id')->
             on('charges')->onDelete('cascade')->onUpdate('cascade');
 
-            $table->integer('incidences_id')->unsigned();
-            $table->foreign('incidences_id')->references('id')->
+            $table->integer('incidence_id')->unsigned();
+            $table->foreign('incidence_id')->references('id')->
             on('incidences')->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();

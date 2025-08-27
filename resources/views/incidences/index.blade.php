@@ -29,6 +29,7 @@
                                 <th scope="col"><i class="fa-solid fa-"></i> Generado por...</th>
                                 <th scope="col"><i class="fa-solid fa-"></i> Estado de incidencia</th>
                                 <th scope="col"><i class="fa-solid fa-"></i> Jefe responsable</th>
+                                <th scope="col"><i class="fa-solid fa"></i> Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,8 +37,8 @@
                                 <tr>
 
                                     <td> {{ $incidence->employee->name }} </td>
-                                    <td> {{ $incidence->departaments->name_departament }} </td>
-                                    <td> {{ $incidence->charge->name_charge }} </td>
+                                    <td> {{ $incidence->departament->name_departament }} </td>
+                                    <td> {{ $incidence->charge->name_chargues }} </td>
                                     <td> {{ $incidence->creation_date }} </td>
                                     <td> {{ $incidence->type }} </td>
                                     <td> {{ $incidence->reasson }} </td>
@@ -49,15 +50,15 @@
 
 
                                     <td style="white-space: nowrap; display: flex; align-items: center;">
-                                        <a href="{{ route('incidences.show', $incidences->id) }}" class="btn btn-primary btn-sm"
+                                        <a href="{{ route('incidences.show', $incidence->id) }}" class="btn btn-primary btn-sm"
                                             style="margin-right: 5px">
                                             <i class="fas fa-eye"></i> Mostrar
                                         </a>
-                                        <a href="{{ route('incidences.edit', $incidences->id) }}" class="btn btn-info btn-sm"
+                                        <a href="{{ route('incidences.edit', $incidence->id) }}" class="btn btn-info btn-sm"
                                             style="margin-right: 5px">
                                             <i class="fas fa-edit"></i> Editar
                                         </a>
-                                        <form action="{{ route('incidences.destroy', $incidences->id) }}" method="POST"
+                                        <form action="{{ route('incidences.destroy', $incidence->id) }}" method="POST"
                                             style="display: inline-block; margin: 0; display: flex; align-items: center;"
                                             onsubmit="return confirm('¿Esta seguro que desea eliminar esta incidencia? Esta acción no se puede deshacer.');">
                                             @csrf

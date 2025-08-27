@@ -99,7 +99,7 @@
                 <select name="incidence_id" id="incidence_id" class="form-control form-control-alternative">
                     <option disabled>Incidencias</option>
                     @foreach ($incidences as $incidence)
-                        <option value="{{ $charge->id }}" @selected(old('incidences_id', $incidence->incidence_id) == $incidence->id)>
+                        <option value="{{ $incidence->id }}" @selected(old('incidences_id', $incidence->incidence_id) == $incidence->id)>
                             {{ $incidence->status }}
                         </option>
                     @endforeach

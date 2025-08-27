@@ -43,7 +43,7 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                <label class="form-control-label" for="location">Locacion del departamento</label>
+                <label class="form-control-label" for="location">Area del departamento</label>
                 <input type="text" id="location" name="location" class="form-control form-control-alternative"
                     placeholder="Ingresar Locacion del departamento"
                     value="{{ old('location', $departaments->location) }}">
@@ -67,7 +67,7 @@
             <div class="form-group">
                 <label class="form-control-label" for="state">Ingresar estado del departamento</label>
                 <input type="text" id="state" name="state" class="form-control form-control-alternative"
-                    placeholder="Ingresar descripción del departamento"
+                    placeholder="Ingresar estado del departamento"
                     value="{{ old('state', $departaments->state) }}">
             </div>
         </div>
@@ -92,34 +92,33 @@
             </label>
             <select name="boss_id" id="boss_id" class="form-control form-control-alternative">
                 <option disabled selected> Seleccionar jefe a cargo</option>
-                @foreach ($bosses as $boss_id)
-                    <option value="{{ $boss_id }}"
-                        {{ old('boss_id', $departament->boss_id ?? '') == $boss_id->id ? 'selected' : '' }}>
-                        {{ $boss_id->first_name }}
+                @foreach ($bosses as $boss)
+                    <option value="{{ $boss->id }}"
+                        {{ old('bosses_id', $departament->boss_id ?? '') == $boss->id ? 'selected' : '' }}>
+                        {{ $boss->last_name }}
                     </option>
                 @endforeach
             </select>
         </div>
     </div>
 
-    <div class="col-lg-6">
-        <div class="form-group">
-            <label class="form-control-label" for="charges_id">
-                <i class="fas fa-solid fa-aligin-justify"></i>Cargo designado
-            </label>
-            <select name="charge_id" id="charge_id" class="form-control form-control-alternative">
-                <option disabled selected> Seleccionar cargo</option>
-                @foreach ($charges as $charge_id)
-                    <option value="{{ $charge_id }}"
-                        {{ old('charge_id', $charge->charge_id ?? '') == $charge_id->id ? 'selected' : '' }}>
-                        {{ $charge_id->name_chargues }}
-                    </option>
-                @endforeach
-            </select>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label class="form-control-label" for="charge_id"><i class="fas fa-circle"></i> Cargo</label>
 
+                <select name="charge_id" id="charge_id" class="form-control form-control-alternative">
+                    <option disabled>Seleccionar Cargo</option>
+                    @foreach ($charges as $charge)
+                        <option value="{{ $charge->id }}" @selected(old('charges_id', $charge->charge_id) == $charge->id)>
+                            {{ $charge->name_chargues }}
+                        </option>
+                    @endforeach
+                </select>
+
+            </div>
         </div>
     </div>
-</div>
 
 </div>
 
@@ -130,7 +129,7 @@
 <div class="pl-lg-4">
     <div class="form-group">
         <button type="submit" class="btn btn-primary">
-            <i class="fas fa-save"></i> Guardar Ausencia
+            <i class="fas fa-save"></i> Guardar Departamento
         </button>
     </div>
 </div>

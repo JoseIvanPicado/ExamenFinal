@@ -16,9 +16,8 @@ class IncidenceController extends Controller
      */
     public function index()
     {
-        $incidences = Incidence::latest()->paginate(5);
-        return view('incidences.index', compact('incidences'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        $incidences = Incidence::with('employee', 'departament', 'charge', 'boss')->paginate(5);
+        return view('incidences.index', compact('incidences'));
     }
 
     /**
@@ -31,6 +30,7 @@ class IncidenceController extends Controller
         $employees = Employee::all();
         $departaments = Departament::all();
         $charges = Charge::all();
+
         $bosses = Boss::all();
 
         return view('incidences.create', compact('incidences', 'employees', 'departaments', 'charges', 'bosses'));
@@ -41,15 +41,10 @@ class IncidenceController extends Controller
      */
     public function store(IncidenceRequest $request)
     {
-        Incidence::create($request->validate([
-            'description' => 'required|string|max:255',
-            'employee_id' => 'required|exists:employees,id',
-            'charge_id' => 'required|exists:charges,id',
-            'boss_id' => 'required|exists:bosses,id'
-        ]));
+        Incidence::create($request->validated());
 
         return redirect()->route('incidences.index')
-            ->with('success', 'Incidencia creada con éxito.');
+            ->with('success', 'Incidencia creada con exito.');
     }
 
     /**
@@ -96,15 +91,11 @@ class IncidenceController extends Controller
             return redirect()->route('incidences.index')->with('error', 'Incidencia no encontrada.');
         }
 
-        $incidences->update($request->validate([
-            'description' => 'required|string|max:255',
-            'employee_id' => 'required|exists:employees,id',
-            'charge_id' => 'required|exists:charges,id',
-            'boss_id' => 'required|exists:bosses,id',
-        ]));
+
+        $incidences->update($request->validated());
 
         return redirect()->route('incidences.index')
-            ->with('update', 'Incidencia actualizada con éxito.');
+        ->with('updated', 'Incidencia actualizada con éxito.');
     }
 
     /**
@@ -121,6 +112,6 @@ class IncidenceController extends Controller
         $incidences->delete();
 
         return redirect()->route('incidences.index')
-            ->with('delete', 'Incidencia eliminada con éxito.');
+            ->with('deleted', 'Incidencia eliminada con éxito.');
     }
 }

@@ -22,23 +22,23 @@ class DepartamentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'employees_id' => 'required',
-            
+            'employee_id' => 'required|exists:employees,id',
+
             'name_departament' => 'required|string|max:80',
             'location' => 'required|string|max:100',
             'description' => 'required|string|max:500',
             'state' => 'required|string|max:30',
             'capacity_staff' => 'required|integer',
 
-            'bosses_id' => 'required',
-            'charges_id' => 'required',
+            'boss_id' => 'required|exists:bosses,id',
+            'charge_id' => 'required|exists:charges,id',
         ];
     }
 
     public function messages(): array
     {
         return [
-            'employees_id.required' => 'El empleado asignado es obligatorio.',
+            'employee_id.required' => 'El empleado asignado es obligatorio.',
 
             'name_departament.required' => 'El nombre del departamento es obligatorio.',
             'name_departament.string' => 'El nombre del departamento debe contener solo caracteres.',
@@ -63,9 +63,11 @@ class DepartamentRequest extends FormRequest
             'capacity_staff.required' => 'La capacidad de personal a cargo es obligatoria.',
             'capacity_staff.integer' => 'La capacidad de personal a cargo debe ser un número entero.',
 
-            'bosses_id.required' => 'El jefe asignado es obligatorio.',
+            'boss_id.required' => 'El jefe asignado es obligatorio.',
+            'boss_id.exists' => 'El jefe seleccionada no existe.',
 
-            'charges_id.required' => 'El cargo asignado es obligatorio.',
+            'charge_id.required' => 'El cargo asignado es obligatorio.',
+            'charge_id.exists' => 'El cargo seleccionado no existe.',
         ];
     }
 }

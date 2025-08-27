@@ -1,22 +1,19 @@
-<h6 class="heading-small text-muted mb-4">Información de la Ausencia</h6>
-
 <div class="pl-lg-4">
 
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-               <label class="form-control-label" for="employees_id">
-                    <i class="fas fa-user-graduate"> Nombre de empleado
-                </label>
-               <select name="employees_id" id="employees_id" class="form-control form-control-alternative">
-                    <option disabled selected>Seleccione un empleado</option>
+                <label class="form-control-label" for="employee_id"><i class="fas fa-user-circle"></i> Trabajador</label>
+
+                <select name="employee_id" id="employee_id" class="form-control form-control-alternative">
+                    <option disabled>Seleccionar Trabajador</option>
                     @foreach ($employees as $employee)
-                        <option value="{{ $employee->id}}"
-                            {{ old('$employee_id', $absence->employee_id ?? '') == $employee->id ? 'selected' : '' }}>
+                        <option value="{{ $employee->id }}" @selected(old('employee_id', $employee->employee_id) == $employee->id)>
                             {{ $employee->name }}
                         </option>
                     @endforeach
-               </select>
+                </select>
+
             </div>
         </div>
     </div>
@@ -25,10 +22,10 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                <label class="form-control-label" for="date_start">Ingresar fecha de creacion</label>
-                <input type="date" id="date_start" name="date_start" class="form-control form-control-alternative"
+                <label class="form-control-label" for="date_in">Ingresar fecha de creacion</label>
+                <input type="date" id="date_in" name="date_in" class="form-control form-control-alternative"
                     placeholder="Ingresar fecha de creacion"
-                    value="{{ old('date_start', $absences->date_start)}}">
+                    value="{{ old('date_in', $absences->date_in)}}">
             </div>
         </div>
     </div>
@@ -84,40 +81,41 @@
         </div>
     </div>
 
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="attendance_registration_id"><i class="fas fa-circle"></i> Registro de asistencia</label>
+
+                    <select name="attendance_registration_id" id="attendance_registration_id" class="form-control form-control-alternative">
+                        <option disabled>Seleccionar registro de asistencia</option>
+                        @foreach ($attendance_registrations as $attendance_registration)
+                            <option value="{{ $attendance_registration->id }}" @selected(old('attendance_registrations_id', $attendance_registration->attendance_registration) == $attendance_registration->id)>
+                                {{ $attendance_registration->hours_worked }}
+                            </option>
+                        @endforeach
+                    </select>
+
+                </div>
+            </div>
+        </div>
+
     <div class="col-lg-6">
         <div class="form-group">
-            <label class="form-control-label" for="attendance_registration_id">
-                <i class="fas fa-solid fa-aligin-justify"></i> Registro de entradas
+            <label class="form-control-label" for="boss_id">
+                <i class="fas fa-solid fa-aligin-justify"></i> Jefe a cargo
             </label>
-            <select name="attendance_registration_id" id="attendance_registration_id" class="form-control form-control-alternative">
-                <option disabled selected> Seleccionar hora de entrada</option>
-                @foreach ($attendance_registrations_id as $attendance_registration_id)
-                    <option value="{{ $attendance_registration->id }}"
-                        {{ old('attendance_registration_id', $absence->attendance_registration_id ?? '' ) == $attendance_registration->id ? 'selected' : ''}}>
-                        {{ $attendance_registration->hours_worked }}
+            <select name="boss_id" id="boss_id" class="form-control form-control-alternative">
+                <option disabled selected> Seleccionar jefe a cargo</option>
+                @foreach ($bosses as $boss)
+                    <option value="{{ $boss->id }}"
+                        {{ old('bosses_id', $absence->boss_id ?? '') == $boss->id ? 'selected' : '' }}>
+                        {{ $boss->last_name }}
                     </option>
                 @endforeach
             </select>
         </div>
     </div>
 
-        <div class="col-lg-6">
-            <div class="form-group">
-                <label class="form-control-label" for="boss_id">
-                    <i class="fas fa-solid fa-aligin-justify"></i> Registro de entradas
-                </label>
-                <select name="boss_id" id="boss_id" class="form-control form-control-alternative">
-                    <option disabled selected> Seleccionar jefe a cargo</option>
-                    @foreach ($bosses_id as $boss_id)
-                        <option value="{{ $boss_id }}"
-                            {{ old('boss_id', $absence->boss_id ?? '' ) == $boss_id->id ? 'selected' : ''}}>
-                            {{ $boss_id->hours_worked }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
-    </div>
 </div>
 
     <hr class="my-4" />

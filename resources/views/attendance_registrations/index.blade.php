@@ -26,6 +26,7 @@
                                 <th scope="col"><i class="fa-solid fa-"></i> Nombre del empleado</th>
                                 <th scope="col"><i class="fa-solid fa-"></i> Nombre del cargo</th>
                                 <th scope="col"><i class="fa-solid fa-"></i> Incidencias</th>
+                                <th scope="col"><i class="fa-solid fa"></i> Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,21 +38,21 @@
                                     <td> {{ $attendance_registration->time_exit }} </td>
                                     <td> {{ $attendance_registration->hours_worked }} </td>
                                     <td> {{ $attendance_registration->overtime }} </td>
-                                    <td> {{ $attendance_registration->employees->name }} </td>
-                                    <td> {{ $attendance_registration->charges->name_charge }} </td>
-                                    <td> {{ $attendance_registration->incidences->type }} </td>
+                                    <td> {{ $attendance_registration->employee->name }} </td>
+                                    <td> {{ $attendance_registration->charge->name_chargues }} </td>
+                                    <td> {{ $attendance_registration->incidence->type }} </td>
 
 
                                     <td style="white-space: nowrap; display: flex; align-items: center;">
-                                        <a href="{{ route('attendance_registrations.show', $attendance_registrations->id) }}" class="btn btn-primary btn-sm"
+                                        <a href="{{ route('attendance_registrations.show', $attendance_registration->id) }}" class="btn btn-primary btn-sm"
                                             style="margin-right: 5px">
                                             <i class="fas fa-eye"></i> Mostrar
                                         </a>
-                                        <a href="{{ route('attendance_registrations.edit', $attendance_registrations->id) }}" class="btn btn-info btn-sm"
+                                        <a href="{{ route('attendance_registrations.edit', $attendance_registration->id) }}" class="btn btn-info btn-sm"
                                             style="margin-right: 5px">
                                             <i class="fas fa-edit"></i> Editar
                                         </a>
-                                        <form action="{{ route('attendance_registrations.destroy', $attendance_registrations->id) }}" method="POST"
+                                        <form action="{{ route('attendance_registrations.destroy', $attendance_registration->id) }}" method="POST"
                                             style="display: inline-block; margin: 0; display: flex; align-items: center;"
                                             onsubmit="return confirm('¿Esta seguro que desea eliminar esta asistencia? Esta acción no se puede deshacer.');">
                                             @csrf

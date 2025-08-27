@@ -9,34 +9,34 @@ class Departament extends Model
     protected $table = 'departaments';
 
     protected $fillable = [
-        'employees_id',
+        'employee_id',
         'name_departament',
         'location',
         'description',
         'state',
         'capacity_staff',
-        'bosses_id',
-        'charges_id',
+        'boss_id',
+        'charge_id',
     ];
 
-    public function employee()
-    {
-        return $this->belongsTo(Employee::class);
-    }
+   public function employee()
+{
+    return $this->belongsTo(Employee::class);
+}
 
-    public function boss()
-    {
-        return $this->belongsTo(Boss::class);
-    }
+public function boss()
+{
+    return $this->belongsTo(Employee::class);
+}
 
-    public function charge()
-    {
-        return $this->belongsTo(charge::class);
-    }
+public function charge()
+{
+    return $this->belongsTo(Charge::class);
+}
 
-    public function horary()
-    {
-        return $this->belongsTo(Horary::class);
-    }
+   // public function horary()
+    //{
+       // return $this->belongsTo(Horary::class);
+    //}
 
 }

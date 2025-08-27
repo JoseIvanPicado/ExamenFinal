@@ -9,14 +9,14 @@ class Absence extends Model
     protected $table = 'absences';
 
     protected $fillable = [
-        'employees_id',
-        'date_start',
+        'employee_id',
+        'date_in',
         'date_end',
         'type',
         'reasson',
         'status',
-        'attendance_registrations_id',
-        'bosses_id'
+        'attendance_registration_id',
+        'boss_id'
     ];
 
     public function employee()
@@ -24,9 +24,9 @@ class Absence extends Model
         return $this->belongsTo(Employee::class);
     }
 
-    public function charge()
+    public function attendance_registration()
     {
-        return $this->belongsTo(Charge::class);
+        return $this->belongsTo(Attendance_registration::class);
     }
 
     public function boss()

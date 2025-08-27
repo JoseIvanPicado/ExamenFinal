@@ -27,7 +27,7 @@
                     <option disabled>Seleccionar Departamento</option>
                     @foreach ($departaments as $departament)
                         <option value="{{ $departament->id }}" @selected(old('departament_id', $departament->departament_id) == $departament->id)>
-                            {{ $departament->name }}
+                            {{ $departament->name_departament }}
                         </option>
                     @endforeach
                 </select>
@@ -45,7 +45,7 @@
                     <option disabled>Seleccionar Cargo</option>
                     @foreach ($charges as $charge)
                         <option value="{{ $charge->id }}" @selected(old('charge_id', $charge->charge_id) == $charge->id)>
-                            {{ $charge->name_charge }}
+                            {{ $charge->name_chargues }}
                         </option>
                     @endforeach
                 </select>
@@ -57,11 +57,10 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                <label class="form-control-label" for="creation_date">Fecha de creacion de la incidencia</label>
-                <input type="date" id="creation_date" name="creation_date"
-                    class="form-control form-control-alternative"
-                    placeholder="Ingresar fecha de creacion de la incidencia"
-                    value="{{ old('creation_date', isset($incidences->creation_date)) ? $incidences->creation_date->format(y - m - d) : '' }}">
+                <label class="form-control-label" for="creation_date">Fecha de creación</label>
+                <input type="date" id="creation_date" name="creation_date" class="form-control form-control-alternative"
+                    placeholder="Ingresar Locacion del departamento"
+                    value="{{ old('creation_date', $incidences->creation_date) }}">
             </div>
         </div>
     </div>

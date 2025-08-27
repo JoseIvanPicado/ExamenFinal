@@ -22,22 +22,22 @@ class HoraryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'employees_id' => 'required|exists:employees,id',
-            
-            'expected_input' => 'required|time',
-            'expected_exit' => 'required|time',
-            'over_time' => 'nullable|time',
+            'employee_id' => 'required|exists:employees,id',
 
-            'departaments_id' => 'required|exists:departaments,id',
-            'bosses_id' => 'required|exists:bosses,id'
+            'expected_input' => 'required',
+            'expected_exit' => 'required',
+            'overtime' => 'required',
+
+            'departament_id' => 'required|exists:departaments,id',
+            'boss_id' => 'required|exists:bosses,id'
         ];
     }
 
     public function messages(): array
     {
         return [
-            'employees_id.required' => 'El empleado es obligatorio.',
-            'employees_id.exists' => 'El empleado seleccionado no existe.',
+            'employee_id.required' => 'El empleado es obligatorio.',
+            'employee_id.exists' => 'El empleado seleccionado no existe.',
 
             'expected_input.required' => 'La hora de entrada esperada es obligatoria.',
             'expected_input.date_format' => 'La hora de entrada esperada debe tener el formato AM:PM.',
@@ -45,13 +45,13 @@ class HoraryRequest extends FormRequest
             'expected_exit.required' => 'La hora de salida esperada es obligatoria.',
             'expected_exit.date_format' => 'La hora de salida esperada debe tener el formato AM:PM.',
 
-            'over_time.time' => 'El tiempo extra debe ser una hora válida.',
+            'overtime.required' => 'Las horas extras es obligatoria.',
 
-            'departaments_id.required' => 'El departamento es obligatorio',
-            'departaments_id.exists' => 'El departamento seleccionado no existe.',
+            'departament_id.required' => 'El departamento es obligatorio',
+            'departament_id.exists' => 'El departamento seleccionado no existe.',
 
-            'bosses_id.required' => 'El jefe es obligatorio.',
-            'bosses_id.exists' => 'El jefe seleccionado no existe.',
+            'boss_id.required' => 'El jefe es obligatorio.',
+            'boss_id.exists' => 'El jefe seleccionado no existe.',
         ];
     }
 }

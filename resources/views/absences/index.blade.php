@@ -26,13 +26,14 @@
                                 <th scope="col"><i class="fa-solid fa-calendar-days"></i> Estado de la ausencia</th>
                                 <th scope="col"><i class="fa-solid fa-calendar-days"></i> Registro de horas laborales</th>
                                 <th scope="col"><i class="fa-solid fa-calendar-days"></i> Nombre del jefe a cargo</th>
+                                <th scope="col"><i class="fa-solid fa"></i> Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($absences as $absence)
                                 <tr>
                                     <td> {{ $absence->employee->name }} </td>
-                                    <td> {{ $absence->date_start }} </td>
+                                    <td> {{ $absence->date_in }} </td>
                                     <td> {{ $absence->date_end }} </td>
                                     <td> {{ $absence->type }} </td>
                                     <td> {{ $absence->reasson }} </td>
@@ -42,15 +43,15 @@
 
 
                                     <td style="white-space: nowrap; display: flex; align-items: center;">
-                                        <a href="{{ route('absences.show', $absences->id) }}" class="btn btn-primary btn-sm"
+                                        <a href="{{ route('absences.show', $absence->id) }}" class="btn btn-primary btn-sm"
                                             style="margin-right: 5px">
                                             <i class="fas fa-eye"></i> Mostrar
                                         </a>
-                                        <a href="{{ route('absences.edit', $absences->id) }}" class="btn btn-info btn-sm"
+                                        <a href="{{ route('absences.edit', $absence->id) }}" class="btn btn-info btn-sm"
                                             style="margin-right: 5px">
                                             <i class="fas fa-edit"></i> Editar
                                         </a>
-                                        <form action="{{ route('absences.destroy', $absences->id) }}" method="POST"
+                                        <form action="{{ route('absences.destroy', $absence->id) }}" method="POST"
                                             style="display: inline-block; margin: 0; display: flex; align-items: center;"
                                             onsubmit="return confirm('¿Esta seguro que desea eliminar esta ausencia? Esta acción no se puede deshacer.');">
                                             @csrf

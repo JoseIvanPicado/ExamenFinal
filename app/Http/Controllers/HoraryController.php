@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Horary;
 use App\Models\Departament;
-use App\Http\Requests\HoraryRequest;
 use App\Models\Employee;
 use App\Models\Boss;
+use App\Http\Requests\HoraryRequest;
 
 class HoraryController extends Controller
 {
@@ -15,9 +15,8 @@ class HoraryController extends Controller
      */
     public function index()
     {
-        $horaries = Horary::latest()->paginate(5);
-        return view('horaries.index', compact('horaries'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        $horaries = Horary::with('employee', 'departament', 'boss')->paginate(5);
+        return view('horaries.index', compact('horaries'));
     }
 
     /**
@@ -78,7 +77,7 @@ class HoraryController extends Controller
         $horaries->update($request->validated());
 
         return redirect()->route('horaries.index')
-            ->with('update', 'Horario actualizado con exito.');
+            ->with('updated', 'Horario actualizado con exito.');
     }
 
     /**
