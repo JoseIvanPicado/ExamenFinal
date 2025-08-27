@@ -40,7 +40,7 @@ class BossRequest extends FormRequest
             'position' => 'required|string|max:30',
             'departament_charge' => 'required|string|max:50',
             'team_size' => 'required|integer',
-            'budget_responsibility' => 'required|numeric',
+            'budget_responsibility' => 'required|integer',
             'educative_level' => 'required|string|max:50',
             'work_experience' => 'nullable|string|max:500',
             'photo' => 'nullable|image|max:2048',
@@ -124,8 +124,8 @@ class BossRequest extends FormRequest
             'team_size.required' => 'El tamaño del equipo es obligatorio.',
             'team_size.integer' => 'El tamaño del equipo debe ser un número entero.',
 
-            'bogget_responsibility.required' => 'La responsabilidad presupuestaria es obligatoria.',
-            'bogget_responsibility.numeric' => 'La responsabilidad presupuestaria debe ser un número.',
+            'budget_responsibility.required' => 'La responsabilidad presupuestaria es obligatoria.',
+            'budget_responsibility.integer' => 'La responsabilidad presupuestaria debe ser un número.',
 
             'educative_level.required' => 'El nivel educativo es obligatorio.',
             'educative_level.string' => 'El nivel educativo debe contener solo caracteres.',

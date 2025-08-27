@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('position', 30);
             $table->string('departament_charge', 50);
             $table->integer('team_size');
-            $table->decimal('budget_responsibility');
+            $table->integer('budget_responsibility');
             $table->string('educative_level', 50);
             $table->string('work_experience', 500)->nullable();
             $table->string('photo')->nullable();

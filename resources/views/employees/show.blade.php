@@ -11,7 +11,7 @@
                         <h3 class="mb-0"><i class="fas fa_newspaper"></i> Detalles del Empleado</h3>
                     </div>
                     <div class="col-4 text-right">
-                        <a href="{{ route('employees.index')}}" class="btn btn-sm btn-primary">
+                        <a href="{{ route('employees.index') }}" class="btn btn-sm btn-primary">
                             <i class="fas fa-list"></i> Regresar
                         </a>
                     </div>
@@ -22,22 +22,22 @@
                 <h6 class="heading-small text-muted mb-4">Información del Empleado</h6>
                 <div class="pl-lg-4">
 
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="form-group">
-                            <label class="form-control-label" for="name">
-                                <i class="fas fa-user"></i> Nombre del Empleado
-                            <label>
-                            <p> {{ $employees->name }} </p>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="name">
+                                    <i class="fas fa-hashtag"></i> Numero Telefonico
+                                </label>
+                                <p>{{ $employees->name }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label" for="number_phone">
-                                <i class="fas fa-hashtag"></i> Numero Telefonico
+                                    <i class="fas fa-hashtag"></i> Numero Telefonico
                                 </label>
                                 <p>{{ $employees->number_phone }}</p>
                             </div>
@@ -48,7 +48,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label" for="email">
-                                <i class="fas fa-envelope"></i> Correo Electrónico
+                                    <i class="fas fa-envelope"></i> Correo Electrónico
                                 </label>
                                 <p>{{ $employees->mail }}</p>
                             </div>
@@ -59,7 +59,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label" for="address">
-                                <i class="fas fa-map-marker-alt"></i> Dirección
+                                    <i class="fas fa-map-marker-alt"></i> Dirección
                                 </label>
                                 <p>{{ $employees->address }}</p>
                             </div>
@@ -70,7 +70,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label" for="hire_date">
-                                <i class="fas fa-calendar-alt"></i> Fecha de Contratación
+                                    <i class="fas fa-calendar-alt"></i> Fecha de Contratación
                                 </label>
                                 <p>{{ $employees->hire_date }}</p>
                             </div>
@@ -81,7 +81,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label" for="position">
-                                <i class="fas fa-briefcase"></i> Cargo
+                                    <i class="fas fa-briefcase"></i> Cargo
                                 </label>
                                 <p>{{ $employees->position }}</p>
                             </div>
@@ -92,7 +92,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label" for="departament">
-                                <i class="fas fa-building"></i> Departamento
+                                    <i class="fas fa-building"></i> Departamento
                                 </label>
                                 <p>{{ $employees->departament }}</p>
                             </div>
