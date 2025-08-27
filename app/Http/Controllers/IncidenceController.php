@@ -31,9 +31,9 @@ class IncidenceController extends Controller
         $employees = Employee::all();
         $departaments = Departament::all();
         $charges = Charge::all();
-        $attendance_registrations = Boss::all();
+        $bosses = Boss::all();
 
-        return view('incidences.create', compact('incidences', 'employees', 'departaments', 'chages', 'bosses'));
+        return view('incidences.create', compact('incidences', 'employees', 'departaments', 'charges', 'bosses'));
     }
 
     /**
@@ -45,7 +45,7 @@ class IncidenceController extends Controller
             'description' => 'required|string|max:255',
             'employee_id' => 'required|exists:employees,id',
             'charge_id' => 'required|exists:charges,id',
-            'attendance_registration_id' => 'required|exists:attendance_registrations,id',
+            'boss_id' => 'required|exists:bosses,id'
         ]));
 
         return redirect()->route('incidences.index')
@@ -80,9 +80,9 @@ class IncidenceController extends Controller
         $employees = Employee::all();
         $departaments = Departament::all();
         $charges = Charge::all();
-        $attendance_registrations = Boss::all();
+        $bosses = Boss::all();
 
-        return view('incidences.edit', compact('incidences', 'employees', 'departaments', 'chages', 'bosses'));
+        return view('incidences.edit', compact('incidences', 'employees', 'departaments', 'charges', 'bosses'));
     }
 
     /**
@@ -100,7 +100,7 @@ class IncidenceController extends Controller
             'description' => 'required|string|max:255',
             'employee_id' => 'required|exists:employees,id',
             'charge_id' => 'required|exists:charges,id',
-            'attendance_registration_id' => 'required|exists:attendance_registrations,id',
+            'boss_id' => 'required|exists:bosses,id',
         ]));
 
         return redirect()->route('incidences.index')
