@@ -9,6 +9,9 @@ use App\Models\Charge;
 use App\Models\Boss;
 use App\Http\Requests\IncidenceRequest;
 
+use App\Exports\IncidenceExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class IncidenceController extends Controller
 {
     /**
@@ -113,5 +116,10 @@ class IncidenceController extends Controller
 
         return redirect()->route('incidences.index')
             ->with('deleted', 'Incidencia eliminada con éxito.');
+    }
+
+    public function export()
+    {
+        return Excel::download(new IncidenceExport, 'incidences.xlsx');
     }
 }

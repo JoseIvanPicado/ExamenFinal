@@ -8,6 +8,9 @@ use App\Models\Charge;
 use App\Models\Incidence;
 use App\Http\Requests\Attendance_registrationRequest;
 
+use App\Exports\Attendance_registrationExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class Attendance_registrationController extends Controller
 {
     /**
@@ -94,5 +97,11 @@ class Attendance_registrationController extends Controller
 
         return redirect()->route('attendance_registrations.index')
             ->with('deleted', 'Registro de asistencia eliminado con exito.');
+    }
+
+
+    public function export()
+    {
+        return Excel::download(new Attendance_registrationExport, 'attendance_registrations.xlsx');
     }
 }

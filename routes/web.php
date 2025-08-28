@@ -11,6 +11,28 @@ use App\Http\Controllers\IncidenceController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+use App\Exports\EmployeesExport;
+use App\Exports\Attendance_registrationExport;
+use App\Exports\AbsenceExport;
+use App\Exports\IncidenceExport;
+use Maatwebsite\Excel\Facades\Excel;
+
+Route::get('/employees/export/excel', function () {
+    return Excel::download(new EmployeesExport, 'Employees.xlsx');
+})->name('employees.export.excel');
+
+Route::get('/attendances/export/excel', function () {
+    return Excel::download(new Attendance_registrationExport, 'Attendance_registrations.xlsx');
+})->name('attendance_registrations.export.excel');
+
+Route::get('/absences/export/excel', function () {
+    return Excel::download(new AbsenceExport, 'Absences.xlsx');
+})->name('absences.export.excel');
+
+Route::get('/incidences/export/excel', function (){
+    return Excel::download(new IncidenceController, 'Incidences.xlsx');
+})->name('incidences.export.excel');
+
 Route::get('/', function () {
     return view('welcome');
 });

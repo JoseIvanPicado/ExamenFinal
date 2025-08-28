@@ -8,6 +8,9 @@ use App\Models\Boss;
 use App\Http\Requests\AbsenceRequest;
 use App\Models\Attendance_registration;
 
+use App\Exports\AbsenceExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class AbsenceController extends Controller
 {
     /**
@@ -94,5 +97,11 @@ class AbsenceController extends Controller
 
         return redirect()->route('absences.index')
             ->with('delated', 'Ausencia eliminada con exito.');
+    }
+
+
+    public function export()
+    {
+        return Excel::download(new AbsenceExport, 'absences.xlsx');
     }
 }
