@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Absence;
 use App\Models\Employee;
 use App\Models\Boss;
-use App\Http\Requests\AbsenceRequest;
 use App\Models\Attendance_registration;
 
-use App\Exports\AbsenceExport;
+use App\Http\Requests\AbsenceRequest;
+
+use App\Exports\AbsencesExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class AbsenceController extends Controller
@@ -100,8 +101,8 @@ class AbsenceController extends Controller
     }
 
 
-    public function export()
+    public function exportExcel()
     {
-        return Excel::download(new AbsenceExport, 'absences.xlsx');
+        return Excel::download(new AbsencesExport, 'absences.xlsx');
     }
 }

@@ -6,9 +6,10 @@ use App\Models\Attendance_registration;
 use App\Models\Employee;
 use App\Models\Charge;
 use App\Models\Incidence;
+
 use App\Http\Requests\Attendance_registrationRequest;
 
-use App\Exports\Attendance_registrationExport;
+use App\Exports\Attendance_registrationsExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class Attendance_registrationController extends Controller
@@ -100,8 +101,8 @@ class Attendance_registrationController extends Controller
     }
 
 
-    public function export()
+    public function exportExcel()
     {
-        return Excel::download(new Attendance_registrationExport, 'attendance_registrations.xlsx');
+        return Excel::download(new Attendance_registrationsExport, 'attendance_registrations.xlsx');
     }
 }

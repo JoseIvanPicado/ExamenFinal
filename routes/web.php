@@ -12,9 +12,9 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Exports\EmployeesExport;
-use App\Exports\Attendance_registrationExport;
-use App\Exports\AbsenceExport;
-use App\Exports\IncidenceExport;
+use App\Exports\Attendance_registrationsExport;
+use App\Exports\AbsencesExport;
+use App\Exports\IncidencesExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 Route::get('/employees/export/excel', function () {
@@ -22,15 +22,15 @@ Route::get('/employees/export/excel', function () {
 })->name('employees.export.excel');
 
 Route::get('/attendances/export/excel', function () {
-    return Excel::download(new Attendance_registrationExport, 'Attendance_registrations.xlsx');
+    return Excel::download(new Attendance_registrationsExport, 'Attendance_registrations.xlsx');
 })->name('attendance_registrations.export.excel');
 
 Route::get('/absences/export/excel', function () {
-    return Excel::download(new AbsenceExport, 'Absences.xlsx');
+    return Excel::download(new AbsencesExport, 'Absences.xlsx');
 })->name('absences.export.excel');
 
 Route::get('/incidences/export/excel', function (){
-    return Excel::download(new IncidenceExport, 'Incidences.xlsx');
+    return Excel::download(new IncidencesExport, 'Incidences.xlsx');
 })->name('incidences.export.excel');
 
 Route::get('/', function () {

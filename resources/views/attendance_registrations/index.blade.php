@@ -8,9 +8,15 @@
                 <div class="card-header border-0">
                     <div class="d-flex justify-content-between align-items-center">
                         <h3 class="mb-0">Registro</h3>
-                        <a href="{{ route('attendance_registrations.create') }}" class="btn btn-primary">
-                            <i class="fas fa-plus"></i> Nuevo registro
-                        </a>
+                        <div class="d-flex gap-2">
+                            <a href="{{ route('attendance_registrations.create') }}" class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Nuevo registro
+                            </a>
+
+                            <a href="{{ route('attendance_registrations.export.excel') }}" class="btn btn-success">
+                                <i class="fas fa-file-excel me-1"></i> Exportar Excel
+                            </a>
+                        </div>
                     </div>
                 </div>
 
