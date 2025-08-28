@@ -88,6 +88,6 @@ class EmployeeController extends Controller
 
     public function exportExcel()
     {
-        return Excel::download(new EmployeesExport, '')
+        return Excel::download(new EmployeesExport, 'Reporte de trabajador.xlxs'); //FALTA HACER LO MISMO CON EL RESTO
     }
 }
