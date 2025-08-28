@@ -30,7 +30,7 @@ Route::get('/absences/export/excel', function () {
 })->name('absences.export.excel');
 
 Route::get('/incidences/export/excel', function (){
-    return Excel::download(new IncidenceController, 'Incidences.xlsx');
+    return Excel::download(new IncidenceExport, 'Incidences.xlsx');
 })->name('incidences.export.excel');
 
 Route::get('/', function () {

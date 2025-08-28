@@ -4,8 +4,11 @@ namespace App\Exports;
 
 use App\Models\Employee;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithStyles;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class EmployeesExport implements FromCollection
+class EmployeesExport implements FromCollection, WithHeadings, WithStyles
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -18,7 +21,6 @@ class EmployeesExport implements FromCollection
         'years_old',
         'gender',
         'marital_status',
-        'civil_status',
         'number_phone',
         'emergency_contact_phone',
         'emergency_contact_name',
@@ -30,7 +32,7 @@ class EmployeesExport implements FromCollection
         'hire_date',
         'position',
         'departament',
-        ]);
+        ])->get();
     }
 
      public function headings(): array
@@ -53,5 +55,15 @@ class EmployeesExport implements FromCollection
             'Cargo',
             'Departamento'
         ];
+    }
+
+
+    public function styles(Worksheet $sheet)
+    {
+        $sheet->getStyle('A1:P1')->getFont()->setBold(true); // Encabezado en negrita
+        $sheet->getStyle('A1:P1000')->getAlignment()->setWrapText(true); // Ajusta texto
+        foreach (range('A', 'P') as $col) {
+            $sheet->getColumnDimension($col)->setAutoSize(true); // Auto ancho de columnas
+        }
     }
 }

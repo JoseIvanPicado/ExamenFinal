@@ -7,11 +7,17 @@
             <div class="card shadow">
 
                 <div class="card-header border-0">
-                    <div class="d-flex justify-content-between algn-items-center">
+                    <div class="d-flex justify-content-between align-items-center">
                         <h3 class="mb-0">Empleados</h3>
-                        <a href="{{ route('employees.create') }}" class="btn btn-primary">
-                            <i class="fas fa-plus"></i> Crear nuevo Empleado
-                        </a>
+                        <div class="d-flex gap-2">
+                            <a href="{{ route('employees.create') }}" class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Crear nuevo Empleado
+                            </a>
+
+                            <a href="{{ route('employees.export.excel') }}" class="btn btn-success">
+                                <i class="fas fa-file-excel me-1"></i> Exportar Excel
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -26,7 +32,8 @@
                                 <th scope="col"><i class="fas fa-heart"></i> Estado civil</th>
                                 <th scope="col"><i class="fas fa-phone"></i> Número telefónico</th>
                                 <th scope="col"><i class="fas fa-phone-square-alt"></i> Número de emergencia</th>
-                                <th scope="col"><i class="fas fa-user-friends"></i> Nombre de contacto para emergencias</th>
+                                <th scope="col"><i class="fas fa-user-friends"></i> Nombre de contacto para emergencias
+                                </th>
                                 <th scope="col"><i class="fas fa-envelope"></i> Correo Gmail</th>
                                 <th scope="col"><i class="fas fa-flag"></i> Nacionalidad</th>
                                 <th scope="col"><i class="fas fa-graduation-cap"></i> Nivel educativo</th>
@@ -36,11 +43,11 @@
                                 <th scope="col"><i class="fas fa-briefcase"></i> Cargo</th>
                                 <th scope="col"><i class="fas fa-building"></i> Departamento</th>
                                 <th scope="col"><i class="fas fa-cogs"></i> Acciones</th>
-                                </tr>
+                            </tr>
                         </thead>
                         <tbody>
 
-@foreach ($employees as $employee)
+                            @foreach ($employees as $employee)
                                 <tr>
                                     <td>{{ $employee->name }}</td>
                                     <td>{{ $employee->last_name }}</td>
@@ -60,8 +67,8 @@
                                     <td>{{ $employee->departament }}</td>
 
                                     <td style="white-space: nowrap; display: flex; align-items: center;">
-                                        <a href="{{ route('employees.show', $employee->id) }}" class="btn btn-primary btn-sm"
-                                            style="margin-right: 5px">
+                                        <a href="{{ route('employees.show', $employee->id) }}"
+                                            class="btn btn-primary btn-sm" style="margin-right: 5px">
                                             <i class="fas fa-eye"></i> Mostrar
                                         </a>
                                         <a href="{{ route('employees.edit', $employee->id) }}" class="btn btn-info btn-sm"
@@ -94,4 +101,3 @@
         </div>
     </div>
 @endsection
-
